@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import Layout from "./components/Layout";
+import Walk from "./components/Walk";
+import walkData from "./assets/walkData";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Header title={walkData.title} />
+      <div>
+        <nav>Nav goes here.</nav>
+        <main>
+          <Walk stops={walkData.stops} />
+        </main>
+      </div>
+    </Layout>
   );
-}
+};
 
 export default App;

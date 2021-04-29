@@ -1,0 +1,19 @@
+:root {
+  --outerMargin: 25px;
+  --innerMargin: 10px;
+  --textColor: #333;
+  --backgroundColor: #eee;
+  --lineColor: #888;
+  --navWidth: 200px;
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
