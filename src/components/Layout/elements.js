@@ -16,15 +16,20 @@ export const Wrapper = styled.div`
     min-height: 100%;
     min-width: 100%;
     & > nav {
+      box-sizing: border-box;
       min-width: var(--navWidth);
-      padding: var(--outerMargin);
+      padding: 0 var(--innerMargin) var(--outerMargin) var(--outerMargin);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: calc(100% - var(--headerHeight));
     }
     & > main {
       min-width: 100%;
       padding: var(--outerMargin);
-      border-top: 1px solid var(--lineColor);
-      border-left: 1px solid var(--lineColor);
-      background-color: white;
+      /* border-top: 1px solid var(--lineColor);
+      border-left: 1px solid var(--lineColor); */
+      background-color: var(--black);
       overflow-x: scroll;
       overflow-y: scroll;
       position: relative;

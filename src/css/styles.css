@@ -4,7 +4,11 @@
   --textColor: #333;
   --backgroundColor: #eee;
   --lineColor: #888;
+  --black: black;
+  --white: white;
   --navWidth: 200px;
+  --headerHeight: 100px;
+  --highlightColor: orange;
   color: var(--textColor);
   background-color: var(--backgroundColor);
   box-sizing: border-box;

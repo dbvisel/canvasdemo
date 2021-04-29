@@ -4,7 +4,8 @@
  *
  * Each stop consists of:
  *
- * id: A unique ID for the stop
+ * id: string, a unique ID for the stop
+ * title: string, a name for the stop (if desired)
  * isStartPoint: boolean, true if this stop can be a starting point for a walk.
  * isStopPoint: boolean, true is this stop can be a stopping point for a walk.
  * nextStop: an array of IDs of stops that this stop should continue on to.
@@ -32,13 +33,13 @@ const walkData = {
       id: "stop2",
       type: "video",
       url: "https://archive.org/embed/peril_of_doc_ock",
-      nexstStop: ["stop3"],
+      nextStop: ["stop3"],
     },
-    { id: "stop3", nexstStop: ["stop4"] },
-    { id: "stop4", nexstStop: ["stop5"] },
-    { id: "stop5", nexstStop: ["stop6"] },
-    { id: "stop6", nexstStop: ["stop7"] },
-    { id: "stop7", nexstStop: ["stop8"] },
+    { id: "stop3", nextStop: ["stop4"] },
+    { id: "stop4", nextStop: ["stop5"] },
+    { id: "stop5", nextStop: ["stop6"] },
+    { id: "stop6", nextStop: ["stop7"] },
+    { id: "stop7", nextStop: ["stop8"] },
     {
       id: "stop8",
       type: "comment",
