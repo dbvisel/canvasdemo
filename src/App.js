@@ -21,6 +21,7 @@ const App = () => {
           <div>
             <h2>Choose a walk:</h2>
             <select
+              selected={currentWalk}
               onBlur={(e) => {
                 e.preventDefault();
                 setCurrentWalk(

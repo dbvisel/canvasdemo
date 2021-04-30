@@ -12,10 +12,9 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
     () => ({
       type: ItemTypes.STOP,
       item: {
-        id: stopData.id,
+        ...stopData,
         left: stopData.left,
         top: stopData.top,
-        ...stopData,
       },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
