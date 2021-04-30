@@ -1,6 +1,6 @@
 # canvas demo
 
-Collage/canvas demo. This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or walks) based on what's in that data. Demo version of this can be seen at https://collagewalk.netlify.app.
+Demo done in React to demonstrate how a JSON data format could be used to present "walks" of embedded items/sections of items from the Internet Archive, interleaved, if desired, with comments. This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or walks) based on what's in that data. Demo deployment of this can be seen at https://collagewalk.netlify.app.
 
 ## REMEMBER
 

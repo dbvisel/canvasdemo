@@ -11,9 +11,11 @@ export const StopWrapper = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--lineColor);
   transition: 0.25s;
+  cursor: pointer;
   &.selected {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     border-color: var(--highlightColor);
+    z-index: 9;
   }
   & h2 {
     margin: 0 0 var(--innerMargin) 0;

@@ -22,9 +22,13 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      height: calc(100% - var(--headerHeight));
+      height: calc(100% - 75px); // where does this 75 come from?
       & > div + div {
         margin-top: var(--outerMargin);
+      }
+      & > div:last-child {
+        margin-top: auto;
+        user-select: none;
       }
       & h2 {
         margin: 0 0 var(--innerMargin) 0;
@@ -43,8 +47,7 @@ export const Wrapper = styled.div`
     & > main {
       min-width: 100%;
       padding: var(--outerMargin);
-      /* border-top: 1px solid var(--lineColor);
-      border-left: 1px solid var(--lineColor); */
+      border-top-left-radius: var(--innerMargin);
       background-color: var(--black);
       overflow-x: scroll;
       overflow-y: scroll;

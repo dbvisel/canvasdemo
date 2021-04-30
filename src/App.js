@@ -28,7 +28,7 @@ const App = () => {
               }}
             >
               {walkData.walks.map((walk, index) => (
-                <option key={index} value={walk.id}>
+                <option key={`walk_${index}`} value={walk.id}>
                   {walk.title}
                 </option>
               ))}
@@ -39,6 +39,7 @@ const App = () => {
               <h2>Go to start:</h2>
               {myStartPoints.map((startpoint, index) => (
                 <button
+                  key={`startpoint_${index}`}
                   onClick={(e) => {
                     e.preventDefault();
                     setSelectedStop(startpoint.id);

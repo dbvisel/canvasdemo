@@ -28,7 +28,8 @@ const walkData = {
           id: "stop1",
           title: "The start point",
           type: "comment",
-          text: "This is the very first stop. It's just this text",
+          text:
+            "This is the very first stop. It's just this text. Click on another stop, or the NEXT button to go on.",
           isStartPoint: true,
           nextStop: ["stop2"],
         },
@@ -36,9 +37,17 @@ const walkData = {
           id: "stop2",
           type: "video",
           url: "https://archive.org/embed/peril_of_doc_ock",
+          text:
+            "This is an embedded video clip. It can also have comment data in it, like this.",
           nextStop: ["stop3"],
         },
-        { id: "stop3", nextStop: ["stop4"] },
+        {
+          id: "stop3",
+          type: "comment",
+          text:
+            "A stop can be an embedded object (like the video) or it can just be a comment (like this one).",
+          nextStop: ["stop4"],
+        },
         { id: "stop4", nextStop: ["stop5"] },
         { id: "stop5", nextStop: ["stop6"] },
         { id: "stop6", nextStop: ["stop7"] },

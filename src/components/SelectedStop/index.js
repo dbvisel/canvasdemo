@@ -29,7 +29,7 @@ const SelectedStop = ({ stop, setSelectedStop, currentWalk }) => {
           <strong>Text:</strong> {stop.text}
         </p>
       ) : null}
-      <p>{JSON.stringify(stop)}</p>
+      {/*<p>{JSON.stringify(stop)}</p>*/}
       {previousStop.map((prevStop, index) => (
         <button
           key={index}
