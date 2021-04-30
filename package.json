@@ -1,5 +1,6 @@
 {
   "name": "canvasdemo",
+	"author": "Dan Visel <dbvisel@gmail.com>",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
