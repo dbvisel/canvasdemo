@@ -7,15 +7,56 @@ import walkData from "./assets/walkData";
 
 const App = () => {
   const [selectedStop, setSelectedStop] = React.useState("");
+  const [currentWalk, setCurrentWalk] = React.useState(walkData.walks[0]);
+
+  const myStartPoints = currentWalk.stops.filter((x) => x.isStartPoint);
+
   return (
     <Layout>
-      <Header title={walkData.title} />
-      <div>
+      <Header title={currentWalk.title} />
+      <div key={currentWalk.id}>
         <nav>
-          Nav goes here.
+          <div>
+            <h2>Choose a walk:</h2>
+            <select
+              onBlur={(e) => {
+                e.preventDefault();
+                setCurrentWalk(
+                  walkData.walks.filter((x) => x.id === e.target.value)[0]
+                );
+                setSelectedStop("");
+              }}
+            >
+              {walkData.walks.map((walk, index) => (
+                <option key={index} value={walk.id}>
+                  {walk.title}
+                </option>
+              ))}
+            </select>
+          </div>
+          {myStartPoints ? (
+            <div>
+              <h2>Go to start:</h2>
+              {myStartPoints.map((startpoint, index) => (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedStop(startpoint.id);
+                  }}
+                >
+                  {startpoint.title
+                    ? startpoint.title
+                    : myStartPoints.length > 1
+                    ? `Start point ${index + 1}`
+                    : "Start point"}
+                </button>
+              ))}
+            </div>
+          ) : null}
           {selectedStop ? (
             <SelectedStop
-              stop={walkData.stops.filter((x) => x.id === selectedStop)[0]}
+              currentWalk={currentWalk}
+              stop={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
               setSelectedStop={setSelectedStop}
             />
           ) : null}
@@ -27,7 +68,7 @@ const App = () => {
           }}
         >
           <Walk
-            stops={walkData.stops}
+            stops={currentWalk.stops}
             selectedStop={selectedStop}
             setSelectedStop={setSelectedStop}
           />

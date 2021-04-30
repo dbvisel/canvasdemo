@@ -21,8 +21,15 @@ export const Wrapper = styled.div`
       padding: 0 var(--innerMargin) var(--outerMargin) var(--outerMargin);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       height: calc(100% - var(--headerHeight));
+      & > div + div {
+        margin-top: var(--outerMargin);
+      }
+      & h2 {
+        margin: 0 0 var(--innerMargin) 0;
+        font-size: 20px;
+      }
     }
     & > main {
       min-width: 100%;
