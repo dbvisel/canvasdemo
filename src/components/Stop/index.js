@@ -1,19 +1,43 @@
 import React from "react";
+import { useDrag } from "react-dnd";
 import VideoEmbed from "./../VideoEmbed";
 import CommentStop from "./../CommentStop";
 import { StopWrapper } from "./elements";
+import { ItemTypes } from "./../Walk";
 
 const Stop = ({ index, stopData, selectedStop, selectThis }) => {
   const myTitle = stopData.title || `Stop ${index + 1}`;
+
+  const [{ isDragging }, drag] = useDrag(
+    () => ({
+      type: ItemTypes.STOP,
+      item: {
+        id: stopData.id,
+        left: stopData.left,
+        top: stopData.top,
+        ...stopData,
+      },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+    }),
+    [stopData]
+  );
+  // if (isDragging) {
+  //   console.log("dragging!", stopData);
+  // }
+
   return (
     <StopWrapper
-      top={index * 100 + 10}
-      left={index * 100 + 10}
+      top={stopData.top}
+      left={stopData.left}
       className={selectedStop === stopData.id ? "selected" : ""}
       onClick={(e) => {
         e.stopPropagation();
         selectThis(stopData.id);
       }}
+      ref={drag}
+      role="Stop"
     >
       <h2>{myTitle}</h2>
       {stopData.type && stopData.type === "video" ? (

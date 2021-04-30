@@ -1,4 +1,6 @@
 import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
 import Walk from "./components/Walk";
@@ -62,18 +64,20 @@ const App = () => {
             />
           ) : null}
         </nav>
-        <main
-          onClick={(e) => {
-            e.preventDefault();
-            setSelectedStop("");
-          }}
-        >
-          <Walk
-            stops={currentWalk.stops}
-            selectedStop={selectedStop}
-            setSelectedStop={setSelectedStop}
-          />
-        </main>
+        <DndProvider backend={HTML5Backend}>
+          <main
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedStop("");
+            }}
+          >
+            <Walk
+              stops={currentWalk.stops}
+              selectedStop={selectedStop}
+              setSelectedStop={setSelectedStop}
+            />
+          </main>
+        </DndProvider>
       </div>
     </Layout>
   );

@@ -19,6 +19,7 @@ Embedding on Internet Archive: https://archive.org/help/video.php
 * smarter placement on canvas
   * make canvas as big as it needs to be? does this problem go away if we use percentages?
 * maybe different visualizations?
+  * add dragging?
   * CSS grid
   * graph network
   * present mode
