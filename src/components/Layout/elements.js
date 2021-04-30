@@ -28,7 +28,16 @@ export const Wrapper = styled.div`
       }
       & h2 {
         margin: 0 0 var(--innerMargin) 0;
-        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 16px;
+      }
+      & p {
+        margin: 0;
+      }
+      & button {
+        display: block;
+        margin: var(--innerMargin) 0;
       }
     }
     & > main {

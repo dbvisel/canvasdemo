@@ -1,10 +1,17 @@
 # canvas demo
 
+Collage/canvas demo. This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or walks) based on what's in that data. Demo version of this can be seen at https://collagewalk.netlify.app.
+
+## REMEMBER
+
 Embedding on Internet Archive: https://archive.org/help/video.php
+
+## ISSUES
+
+* switching between walks is slow – but that seems like that's an iframe-specific issue?
 
 ## TODO:
 
-* put in real fonts
 * deal with different kinds of embedded docs
   * audio
   * books

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Source Sans Pro";
-  src: local("Source Sans Pro Regular"), local("SourceSansPro"),
+  src: local("Source Sans Pro"), local("SourceSansPro"),
     url("./../fonts/SourceSansPro-Regular.ttf.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Source Sans Pro";
-  src: local("Source Sans Pro Italic"), local("SourceSansProItalic"),
+  src: local("Source Sans Pro"), local("SourceSansPro"),
     url("./../fonts/SourceSansPro-It.ttf.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Source Sans Pro";
-  src: local("Source Sans Pro Bold"), local("SourceSansProBold"),
+  src: local("Source Sans Pro"), local("SourceSansPro"),
     url("./../fonts/SourceSansPro-Bold.ttf.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Source Sans Pro";
-  src: local("Source Sans Pro BoldItalic"), local("SourceSansProBoldItalic"),
+  src: local("Source Sans Pro"), local("SourceSansPro"),
     url("./../fonts/SourceSansPro-BoldIt.ttf.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
@@ -32,44 +32,38 @@
 
 :root {
   --bodyFont: "Source Sans Pro", sans-serif;
-  --outerMargin: 25px;
-  --innerMargin: 10px;
-  --textColor: #333;
-  --backgroundColor: #eee;
-  --lineColor: #888;
-  --black: black;
+  --linkColor: #009a8d;
   --white: white;
-  --navWidth: 200px;
-  --headerHeight: 100px;
-  --highlightColor: orange;
-  color: var(--textColor);
+  --black: black;
+  --text: #333;
+  --background: #f0f0f0;
+  --outerMargin: 25px;
+  --border: 2px solid rgba(0, 0, 0, 0.25);
+  --innerMargin: 10px;
+  --gap: 10px;
   font-family: var(--bodyFont);
   font-size: 16px;
   line-height: 24px;
-  background-color: var(--backgroundColor);
-  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: var(--text);
 }
 
-select,
-option,
-button {
+body {
+  margin: var(--outerMargin);
+}
+
+pre {
   font-family: var(--bodyFont);
 }
 
-select {
-  padding: 2px 5px;
-}
-
-button {
-  padding: 2px 5px;
-  background-color: var(--white);
-  border: 1px solid var(--lineColor);
+a {
+  text-decoration: none;
+  color: var(--linkColor);
 }
