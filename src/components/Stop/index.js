@@ -1,8 +1,9 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import VideoEmbed from "./../VideoEmbed";
+import BookEmbed from "./../BookEmbed";
 import CommentStop from "./../CommentStop";
-import { StopWrapper } from "./elements";
+import { StopWrapper, PresentationStopWrapper } from "./elements";
 import { ItemTypes } from "./../Walk";
 
 const Stop = ({ index, stopData, selectedStop, selectThis }) => {
@@ -41,6 +42,8 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
       <h2>{myTitle}</h2>
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed src={stopData.url} />
+      ) : stopData.type && stopData.type === "book" ? (
+        <BookEmbed src={stopData.url} />
       ) : stopData.type && stopData.type === "comment" ? (
         <CommentStop text={stopData.text} />
       ) : (
@@ -53,18 +56,23 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
 export default Stop;
 
 export const PresentationStop = ({ stopData, index }) => {
-  console.log(stopData);
-  const myTitle = stopData.title || `Stop ${index + 1}`;
+  // console.log(stopData);
   return (
-    <StopWrapper top={0} left={0} role="Stop">
-      <h2>{myTitle}</h2>
+    <PresentationStopWrapper role="Stop">
       {stopData.type && stopData.type === "video" ? (
-        <VideoEmbed src={stopData.url} />
+        <VideoEmbed src={stopData.url} presentationMode />
+      ) : stopData.type && stopData.type === "book" ? (
+        <BookEmbed src={stopData.url} presentationMode />
       ) : stopData.type && stopData.type === "comment" ? (
-        <CommentStop text={stopData.text} />
+        <CommentStop
+          text={stopData.text}
+          presentationMode
+          isStartPoint={stopData.isStartPoint}
+          isStopPoint={stopData.isStopPoint}
+        />
       ) : (
         <div>{JSON.stringify(stopData)}</div>
       )}
-    </StopWrapper>
+    </PresentationStopWrapper>
   );
 };

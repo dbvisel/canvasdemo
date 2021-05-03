@@ -24,6 +24,8 @@ const App = () => {
     }
   }, [presentationMode, selectedStop, currentWalk.stops]);
 
+  console.log(`Selected stop: "${selectedStop}"`);
+
   return (
     <Layout>
       <Header
@@ -31,7 +33,7 @@ const App = () => {
         presentationMode={presentationMode}
         setPresentationMode={setPresentationMode}
       />
-      {presentationMode ? (
+      {presentationMode && selectedStop ? (
         <div id="presentationmode">
           <div>
             <PresentationStop

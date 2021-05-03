@@ -35,11 +35,11 @@ const SelectedStop = ({ stop, setSelectedStop, currentWalk, isBottom }) => {
         : null}
       <div>
         <p>
-          <strong>Name: </strong>{" "}
+          <strong className="verticalonly">Name: </strong>{" "}
           {stop.title || `Stop ${currentWalk.stops.indexOf(stop) + 1}`}
         </p>
         {stop.text ? (
-          <p>
+          <p className="verticalonly">
             <strong>Text:</strong> {stop.text}
           </p>
         ) : null}

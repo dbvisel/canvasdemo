@@ -1,8 +1,8 @@
 import React from "react";
-import { VideoEmbedWrapper } from "./elements";
+import { BookEmbedWrapper } from "./elements";
 
-const VideoEmbed = ({ src, width = 640, height = 480, presentationMode }) => (
-  <VideoEmbedWrapper presentationMode={presentationMode}>
+const BookEmbed = ({ src, width = 480, height = 640, presentationMode }) => (
+  <BookEmbedWrapper presentationMode={presentationMode}>
     <iframe
       src={src}
       width={presentationMode ? "100%" : width}
@@ -13,7 +13,7 @@ const VideoEmbed = ({ src, width = 640, height = 480, presentationMode }) => (
       allowFullScreen
       title={src}
     />
-  </VideoEmbedWrapper>
+  </BookEmbedWrapper>
 );
 
-export default VideoEmbed;
+export default BookEmbed;

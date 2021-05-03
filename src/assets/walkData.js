@@ -35,11 +35,14 @@ const walkData = {
         },
         {
           id: "stop2",
+          title: "A video clip",
           type: "video",
           url: "https://archive.org/embed/peril_of_doc_ock",
           text:
             "This is an embedded video clip. It can also have comment data in it, like this.",
           nextStop: ["stop3"],
+          top: 10,
+          left: 300,
         },
         {
           id: "stop3",
@@ -47,16 +50,31 @@ const walkData = {
           text:
             "A stop can be an embedded object (like the video) or it can just be a comment (like this one).",
           nextStop: ["stop4"],
+          top: 10,
+          left: 975,
         },
-        { id: "stop4", nextStop: ["stop5"] },
-        { id: "stop5", nextStop: ["stop6"] },
-        { id: "stop6", nextStop: ["stop7"] },
-        { id: "stop7", nextStop: ["stop8"] },
+        {
+          id: "stop4",
+          nextStop: ["stop5"],
+          type: "book",
+          title: "A book viewer",
+          url:
+            "https://archive.org/embed/encyclopedia-britannica-and-intellectual-tools-of-the-future/page/n7/mode/1up?view=theater&ui=embed",
+          text:
+            "This is a book viewer embed. I've done this as 1-up, though it could be done as 2-up.",
+          left: 10,
+          top: 400,
+        },
+        { id: "stop5", nextStop: ["stop6"], left: 110, top: 500 },
+        { id: "stop6", nextStop: ["stop7"], left: 210, top: 600 },
+        { id: "stop7", nextStop: ["stop8"], left: 310, top: 700 },
         {
           id: "stop8",
           type: "comment",
           text: "This is the last stop!",
           isStopPoint: true,
+          left: 975,
+          top: 800,
         },
       ],
     },
