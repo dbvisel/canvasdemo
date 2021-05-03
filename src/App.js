@@ -10,9 +10,9 @@ import walkData from "./assets/walkData";
 const App = () => {
   const [selectedStop, setSelectedStop] = React.useState("");
   const [currentWalk, setCurrentWalk] = React.useState(walkData.walks[0]);
+  const [flag, setFlag] = React.useState(false);
 
   const myStartPoints = currentWalk.stops.filter((x) => x.isStartPoint);
-
   return (
     <Layout>
       <Header title={currentWalk.title} />
@@ -21,17 +21,19 @@ const App = () => {
           <div>
             <h2>Choose a walk:</h2>
             <select
-              selected={currentWalk}
-              onBlur={(e) => {
+              selected={currentWalk.id} /* This is working poorly! */
+              onChange={(e) => {
                 e.preventDefault();
+                // console.log(`Changing to ${e.target.value}`);
                 setCurrentWalk(
                   walkData.walks.filter((x) => x.id === e.target.value)[0]
                 );
                 setSelectedStop("");
+                setFlag(() => !flag);
               }}
             >
-              {walkData.walks.map((walk, index) => (
-                <option key={`walk_${index}`} value={walk.id}>
+              {walkData.walks.map((walk) => (
+                <option key={walk.id} name={walk.id} value={walk.id}>
                   {walk.title}
                 </option>
               ))}
@@ -67,6 +69,7 @@ const App = () => {
         </nav>
         <DndProvider backend={HTML5Backend}>
           <main
+            key={flag ? `dummy_${currentWalk.id}` : `dummy2_${currentWalk.id}`}
             onClick={(e) => {
               e.preventDefault();
               setSelectedStop("");
