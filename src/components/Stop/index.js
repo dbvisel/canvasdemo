@@ -8,7 +8,7 @@ import { ItemTypes } from "./../Walk";
 const Stop = ({ index, stopData, selectedStop, selectThis }) => {
   const myTitle = stopData.title || `Stop ${index + 1}`;
 
-  const [{ isDragging }, drag] = useDrag(
+  const [, /*{ isDragging }, */ drag] = useDrag(
     () => ({
       type: ItemTypes.STOP,
       item: {
