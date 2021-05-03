@@ -80,6 +80,10 @@ export const Wrapper = styled.div`
       overflow-x: scroll;
       overflow-y: scroll;
       position: relative;
+      width: calc(100vw - var(--navWidth));
+      & > div {
+        min-width: 200%; /*this should be dynamically set */
+      }
     }
   }
 `;

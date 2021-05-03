@@ -2,6 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import VideoEmbed from "./../VideoEmbed";
 import BookEmbed from "./../BookEmbed";
+import ImageEmbed from "./../ImageEmbed";
 import CommentStop from "./../CommentStop";
 import { StopWrapper, PresentationStopWrapper } from "./elements";
 import { ItemTypes } from "./../Walk";
@@ -41,11 +42,35 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
     >
       <h2>{myTitle}</h2>
       {stopData.type && stopData.type === "video" ? (
-        <VideoEmbed src={stopData.url} />
+        <VideoEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
       ) : stopData.type && stopData.type === "book" ? (
-        <BookEmbed src={stopData.url} />
+        <BookEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
+      ) : stopData.type && stopData.type === "image" ? (
+        <ImageEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
+      ) : stopData.type && stopData.type === "web" ? (
+        <ImageEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
       ) : stopData.type && stopData.type === "comment" ? (
-        <CommentStop text={stopData.text} />
+        <CommentStop
+          text={stopData.text}
+          width={stopData.width}
+          height={stopData.height}
+        />
       ) : (
         <div>{JSON.stringify(stopData)}</div>
       )}
@@ -60,13 +85,39 @@ export const PresentationStop = ({ stopData, index }) => {
   return (
     <PresentationStopWrapper role="Stop">
       {stopData.type && stopData.type === "video" ? (
-        <VideoEmbed src={stopData.url} presentationMode />
+        <VideoEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
       ) : stopData.type && stopData.type === "book" ? (
-        <BookEmbed src={stopData.url} presentationMode />
+        <BookEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
+      ) : stopData.type && stopData.type === "image" ? (
+        <ImageEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
+      ) : stopData.type && stopData.type === "web" ? (
+        <ImageEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
       ) : stopData.type && stopData.type === "comment" ? (
         <CommentStop
           text={stopData.text}
           presentationMode
+          width={stopData.width}
+          height={stopData.height}
           isStartPoint={stopData.isStartPoint}
           isStopPoint={stopData.isStopPoint}
         />

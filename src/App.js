@@ -19,12 +19,12 @@ const App = () => {
   React.useEffect(() => {
     if (presentationMode && selectedStop === "") {
       console.log("No stop selected!");
-      console.log(currentWalk.stops[0].id);
+      // console.log(currentWalk.stops[0].id);
       setSelectedStop(currentWalk.stops[0].id);
     }
   }, [presentationMode, selectedStop, currentWalk.stops]);
 
-  console.log(`Selected stop: "${selectedStop}"`);
+  // console.log(`Selected stop: "${selectedStop}"`);
 
   return (
     <Layout>
