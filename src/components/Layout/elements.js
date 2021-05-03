@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      height: calc(100% - 75px); // where does this 75 come from?
+      height: calc(100vh - 50px); // where does this 75 come from?
       & > div + div {
         margin-top: var(--outerMargin);
       }
