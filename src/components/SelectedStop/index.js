@@ -1,6 +1,7 @@
 import React from "react";
+import { SelectedStopDiv } from "./elements";
 
-const SelectedStop = ({ stop, setSelectedStop, currentWalk }) => {
+const SelectedStop = ({ stop, setSelectedStop, currentWalk, isBottom }) => {
   const getPreviousStop = (id) => {
     const previousStops = [];
     for (let i = 0; i < currentWalk.stops.length; i++) {
@@ -18,28 +19,44 @@ const SelectedStop = ({ stop, setSelectedStop, currentWalk }) => {
 
   const previousStop = getPreviousStop(stop.id);
   return (
-    <div>
-      <h2>Selected stop:</h2>
-      <p>
-        <strong>Name: </strong>{" "}
-        {stop.title || `Stop ${currentWalk.stops.indexOf(stop) + 1}`}
-      </p>
-      {stop.text ? (
+    <SelectedStopDiv className={isBottom ? "horizontal" : ""}>
+      {!isBottom ? <h2>Selected stop:</h2> : null}
+      {isBottom
+        ? previousStop.map((prevStop, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setSelectedStop(prevStop);
+              }}
+            >
+              « Previous stop{previousStop.length > 1 ? ` ${index + 1}` : ""}
+            </button>
+          ))
+        : null}
+      <div>
         <p>
-          <strong>Text:</strong> {stop.text}
+          <strong>Name: </strong>{" "}
+          {stop.title || `Stop ${currentWalk.stops.indexOf(stop) + 1}`}
         </p>
-      ) : null}
+        {stop.text ? (
+          <p>
+            <strong>Text:</strong> {stop.text}
+          </p>
+        ) : null}
+      </div>
       {/*<p>{JSON.stringify(stop)}</p>*/}
-      {previousStop.map((prevStop, index) => (
-        <button
-          key={index}
-          onClick={() => {
-            setSelectedStop(prevStop);
-          }}
-        >
-          « Previous stop{previousStop.length > 1 ? ` ${index + 1}` : ""}
-        </button>
-      ))}
+      {!isBottom
+        ? previousStop.map((prevStop, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setSelectedStop(prevStop);
+              }}
+            >
+              « Previous stop{previousStop.length > 1 ? ` ${index + 1}` : ""}
+            </button>
+          ))
+        : null}
       {stop.nextStop && stop.nextStop.length
         ? stop.nextStop.map((nextStop, index) => (
             <button
@@ -53,7 +70,7 @@ const SelectedStop = ({ stop, setSelectedStop, currentWalk }) => {
             </button>
           ))
         : null}
-    </div>
+    </SelectedStopDiv>
   );
 };
 

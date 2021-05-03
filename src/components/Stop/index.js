@@ -51,3 +51,20 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
 };
 
 export default Stop;
+
+export const PresentationStop = ({ stopData, index }) => {
+  console.log(stopData);
+  const myTitle = stopData.title || `Stop ${index + 1}`;
+  return (
+    <StopWrapper top={0} left={0} role="Stop">
+      <h2>{myTitle}</h2>
+      {stopData.type && stopData.type === "video" ? (
+        <VideoEmbed src={stopData.url} />
+      ) : stopData.type && stopData.type === "comment" ? (
+        <CommentStop text={stopData.text} />
+      ) : (
+        <div>{JSON.stringify(stopData)}</div>
+      )}
+    </StopWrapper>
+  );
+};
