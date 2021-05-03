@@ -1,6 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import VideoEmbed from "./../VideoEmbed";
+import AudioEmbed from "./../AudioEmbed";
 import BookEmbed from "./../BookEmbed";
 import ImageEmbed from "./../ImageEmbed";
 import CommentStop from "./../CommentStop";
@@ -47,6 +48,12 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
           width={stopData.width}
           height={stopData.height}
         />
+      ) : stopData.type && stopData.type === "audio" ? (
+        <AudioEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
       ) : stopData.type && stopData.type === "book" ? (
         <BookEmbed
           src={stopData.url}
@@ -86,6 +93,13 @@ export const PresentationStop = ({ stopData, index }) => {
     <PresentationStopWrapper role="Stop">
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
+      ) : stopData.type && stopData.type === "audio" ? (
+        <AudioEmbed
           src={stopData.url}
           width={stopData.width}
           height={stopData.height}

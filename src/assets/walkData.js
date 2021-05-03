@@ -122,10 +122,12 @@ const walkData = {
         },
         {
           id: "stop2",
-          title: "Example of embedding video",
-          type: "video",
-          url: "https://archive.org/embed/peril_of_doc_ock",
+          title: "Example of embedding audio",
+          type: "audio",
+          url:
+            "https://archive.org/embed/amateur_cracksman_librivox/amateur_cracksman_01_hornung.mp3",
           nextStop: ["stop3"],
+          height: 30,
         },
         {
           id: "stop3",
