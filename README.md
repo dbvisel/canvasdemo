@@ -1,4 +1,4 @@
-# canvas demo
+# canvas collage demo
 
 Demo done in React to demonstrate how a JSON data format could be used to present "walks" of embedded items/sections of items from the Internet Archive, interleaved, if desired, with comments. This is done in React because that was an easy way to get a demo off the ground; it could be made in anything.
 
@@ -6,19 +6,21 @@ This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or 
 
 To run this locally, _npm install_, then _npm start_. Build with _npm run build_.
 
-## ISSUES
+## Issues
 
  - Throbbers aren't wonderful.
  - Canvas size: width right now is 2000px, though it should be changed dynamically (greatest stop's X plus that stop's width plus inner margin)
  - Dragging isn't wonderful & I suspect there's something buggy in my implementation of it.
+ - Performance isn't wonderful because it's a bunch of iframes! 
 
-## DEMO NEEDS
+## Demo needs
 
  - This is fake content and not actually compelling! 
 
-## TODO/FEATURES TO CONSIDER:
+## Todo/Features to consider:
 
  - when a stop is selected, auto-center the canvas?
+   - this is kind of being done, but not very effectively
  - when a stop is selected/double-clicked, go to present mode?
  - arrow keys for moving through present mode
  - comments could be richtext/markdown?
@@ -29,6 +31,6 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
    - CSS grid
    - graph network with arrows
 
-## REMEMBER/REFERENCE
+## Remember/reference
 
  * Embedding on Internet Archive: https://archive.org/help/video.php

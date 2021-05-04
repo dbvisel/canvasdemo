@@ -81,6 +81,8 @@ export const Wrapper = styled.div`
       overflow-y: scroll;
       position: relative;
       width: calc(100vw - var(--navWidth));
+      -webkit-overflow-scrolling: touch;
+      transition: 0.25s;
       & > div {
         min-width: 200%; /*this should be dynamically set */
       }

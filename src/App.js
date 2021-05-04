@@ -13,6 +13,7 @@ const App = () => {
   const [currentWalk, setCurrentWalk] = React.useState(walkData.walks[0]);
   const [presentationMode, setPresentationMode] = React.useState(false);
   const [flag, setFlag] = React.useState(false);
+  const canvas = React.useRef();
 
   const myStartPoints = currentWalk.stops.filter((x) => x.isStartPoint);
 
@@ -23,6 +24,24 @@ const App = () => {
       setSelectedStop(currentWalk.stops[0].id);
     }
   }, [presentationMode, selectedStop, currentWalk.stops]);
+
+  React.useEffect(() => {
+    if (selectedStop && !presentationMode) {
+      const canvasPosition = canvas.current.getBoundingClientRect();
+      const thisStop = canvas.current.querySelector(`#${selectedStop}`);
+      const thisStopPosition = thisStop.getBoundingClientRect();
+
+      const deltaX = thisStopPosition.x - canvasPosition.x - 10;
+      const deltaY = thisStopPosition.y - canvasPosition.y - 10;
+      console.log(canvasPosition, thisStopPosition, deltaX, deltaY);
+
+      canvas.current.scrollTo({
+        top: deltaY,
+        left: deltaX,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedStop, presentationMode]);
 
   // console.log(`Selected stop: "${selectedStop}"`);
 
@@ -105,6 +124,7 @@ const App = () => {
           </nav>
           <DndProvider backend={HTML5Backend}>
             <main
+              ref={canvas}
               key={
                 flag ? `dummy_${currentWalk.id}` : `dummy2_${currentWalk.id}`
               }
