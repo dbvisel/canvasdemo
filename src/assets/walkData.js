@@ -4,15 +4,28 @@
  *
  * Each stop consists of:
  *
- * id: string, a unique ID for the stop
+ * id: string, a unique ID for the stop, required
+ * type: enum ("video" | "audio" | "book" | "comment" | "image" | "web") – this isn't required, but if it's not there (or not one of those), you'll just see JSON in the stop.
  * title: string, a name for the stop (if desired)
  * isStartPoint: boolean, true if this stop can be a starting point for a walk.
  * isStopPoint: boolean, true is this stop can be a stopping point for a walk.
  * nextStop: an array of IDs of stops that this stop should continue on to.
- * type: enum ("video" | "audio" | "book")
- * url: for type video or audio, the embed link.
- * width: number
- * height: number
+ * url: for type video, audio, book, image, or web the embed link.
+ * width: number, width in pixels
+ * height: number, height in pixels
+ * left: number, distance in pixels from left
+ * top: number, distance in pixels from top
+ * text: string, comment on a stop
+ *
+ * Web embed URLs aren't being broken down – so if you want a 1-up book, use this:
+ *
+ * url: "https://archive.org/embed/encyclopedia-britannica-and-intellectual-tools-of-the-future/page/n7/mode/1up?view=theater&ui=embed"
+ *
+ * while if you wanted it 2-up, you could use this:
+ *
+ * url: "https://archive.org/embed/encyclopedia-britannica-and-intellectual-tools-of-the-future/page/n7/mode/2up?view=theater&ui=embed"
+ *
+ * I'm not 100% sure about the best URL formats for embeds, and maybe these could be improved and then parameterized.
  *
  * */
 
