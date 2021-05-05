@@ -25,12 +25,3 @@ export const StopWrapper = styled.div`
   & .selected {
   }
 `;
-
-export const PresentationStopWrapper = styled.div`
-  box-sizing: border-box;
-  background-color: var(--white);
-  color: var(--text);
-  width: 100%;
-  height: 100%;
-  padding: var(--innerMargin);
-`;

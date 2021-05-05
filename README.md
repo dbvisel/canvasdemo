@@ -16,9 +16,16 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 ## Demo needs
 
  - This is fake content and not actually compelling! 
+ - Maybe a network version (with a loop?)
+ - add software embed
+ - add image carousel? Is that essential?
+ - graph network is probably useful visualization
+ - phone presentation mode
+ - add annotation (maybe using Disqus?) https://www.npmjs.com/package/disqus-react
 
 ## Todo/Features to consider:
 
+ - still —> iframe. Could this be dynamically generated?
  - when a stop is selected, auto-center the canvas?
    - this is kind of being done, but not very effectively
  - when a stop is selected/double-clicked, go to present mode?
