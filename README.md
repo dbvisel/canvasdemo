@@ -16,11 +16,12 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 ## Demo needs
 
  - This is fake content and not actually compelling! 
- - Maybe a network version (with a loop?)
- - add software embed
- - add image carousel? Is that essential?
+ - add additional embed types:
+   - software
+   - image carousel? Is that essential?
  - graph network is probably useful visualization
  - phone presentation mode
+   - force presentation mode on vw < 767px?
  - add annotation (maybe using Disqus?) https://www.npmjs.com/package/disqus-react
 
 ## Todo/Features to consider:

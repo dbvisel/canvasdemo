@@ -27,7 +27,11 @@
  *
  * I'm not 100% sure about the best URL formats for embeds, and maybe these could be improved and then parameterized.
  *
- * */
+ * ## NOTES
+ *
+ * * Maybe previous/next stops should have names for when there are multiple destinations?
+ *
+ **/
 
 const walkData = {
   walks: [
@@ -129,9 +133,12 @@ const walkData = {
         {
           id: "stop1",
           type: "comment",
-          text: "This walk doesn't really do anyhing! It's just a second walk.",
+          text: "This walk has a loop in it!",
+          title: "Regular Stop 1",
           isStartPoint: true,
           nextStop: ["stop2"],
+          top: 10,
+          left: 10,
         },
         {
           id: "stop2",
@@ -141,30 +148,98 @@ const walkData = {
             "https://archive.org/embed/amateur_cracksman_librivox/amateur_cracksman_01_hornung.mp3",
           nextStop: ["stop3"],
           height: 30,
+          top: 110,
+          left: 10,
         },
         {
           id: "stop3",
-          type: "video",
-          url: "https://archive.org/embed/peril_of_doc_ock",
+          title: "Regular Stop 3",
+          type: "comment",
+          text: "This is stop 3",
           nextStop: ["stop4"],
+          top: 210,
+          left: 10,
         },
         {
           id: "stop4",
-          type: "video",
-          url: "https://archive.org/embed/peril_of_doc_ock",
-          nextStop: ["stop5"],
+          title: "Decision point",
+          type: "comment",
+          text: "This is stop 4. From here you can go two ways.",
+          nextStop: ["stop4-1", "stop5"],
+          top: 310,
+          left: 10,
+        },
+        {
+          id: "stop4-1",
+          title: "Loop 1",
+          type: "comment",
+          text: "This is loop stop 1!",
+          nextStop: ["stop4-2"],
+          top: 310,
+          left: 400,
+        },
+        {
+          id: "stop4-2",
+          title: "Loop 2",
+          type: "comment",
+          text: "This is loop stop 2!",
+          nextStop: ["stop4-3"],
+          top: 410,
+          left: 400,
+        },
+        {
+          id: "stop4-3",
+          title: "Loop 3",
+          type: "comment",
+          text: "This is loop stop 3!",
+          nextStop: ["stop4-4"],
+          top: 510,
+          left: 400,
+        },
+        {
+          id: "stop4-4",
+          title: "Loop 4",
+          type: "comment",
+          text: "This is loop stop 4!",
+          nextStop: ["stop4"],
+          top: 610,
+          left: 400,
         },
         {
           id: "stop5",
-          type: "video",
-          url: "https://archive.org/embed/peril_of_doc_ock",
+          title: "Regular Stop 5",
+          type: "comment",
+          text: "This is stop 5.",
           nextStop: ["stop6"],
+          top: 410,
+          left: 10,
+        },
+        {
+          id: "stop6",
+          title: "Regular Stop 6",
+          type: "comment",
+          text: "This is stop 6.",
+          nextStop: ["stop7"],
+          top: 510,
+          left: 10,
+        },
+        {
+          id: "stop7",
+          type: "comment",
+          title: "Regular Stop 7",
+          text: "This is stop 7.",
+          nextStop: ["stop8"],
+          top: 610,
+          left: 10,
         },
         {
           id: "stop8",
           type: "comment",
+          title: "Regular Stop 8",
           text: "This is the last stop!",
           isStopPoint: true,
+          top: 710,
+          left: 10,
         },
       ],
     },
