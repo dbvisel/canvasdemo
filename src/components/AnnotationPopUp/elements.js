@@ -29,6 +29,9 @@ export const AnnotationWrapper = styled.div`
     }
   }
   & > div {
-    background-color: var(--white);
+    /* background-color: var(--white); */
+    & #disqus_recommendations {
+      display: none;
+    }
   }
 `;

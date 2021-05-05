@@ -4,7 +4,13 @@ import Stop from "./../Stop";
 
 export const ItemTypes = { STOP: "stop" };
 
-const Walk = ({ stops, selectedStop, setSelectedStop, showAnnotation }) => {
+const Walk = ({
+  stops,
+  selectedStop,
+  setSelectedStop,
+  showAnnotation,
+  walkId,
+}) => {
   const [boxes, setBoxes] = React.useState([]);
 
   React.useEffect(() => {
@@ -61,6 +67,7 @@ const Walk = ({ stops, selectedStop, setSelectedStop, showAnnotation }) => {
           selectThis={() => {
             setSelectedStop(stop.id);
           }}
+          walkId={walkId}
         />
       ))}
     </div>

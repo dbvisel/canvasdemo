@@ -15,10 +15,14 @@ export const HeaderDiv = styled.header`
     justify-content: space-between;
     & span {
       & > a {
+        text-decoration: none;
         margin-left: 8px;
         opacity: 0.5;
         color: var(--text);
         transition: 0.5s;
+        font-size: 24px;
+        display: inline-flex;
+        align-items: center;
         &:hover {
           opacity: 1;
         }

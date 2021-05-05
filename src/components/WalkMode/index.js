@@ -101,6 +101,7 @@ const WalkMode = ({
             selectedStop={selectedStop}
             setSelectedStop={setSelectedStop}
             showAnnotation={showAnnotation}
+            walkId={currentWalk.id}
           />
         </main>
       </DndProvider>

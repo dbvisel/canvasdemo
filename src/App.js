@@ -25,6 +25,7 @@ const App = () => {
     <Layout>
       <Header
         title={currentWalk.title || ""}
+        id={currentWalk.id}
         presentationMode={presentationMode}
         setPresentationMode={setPresentationMode}
         setAnnotationShown={() => {
