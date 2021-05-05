@@ -53,31 +53,7 @@ const Stop = ({
       }}
       ref={drag}
     >
-      <h2>
-        {myTitle}
-        <a
-          href="/#"
-          onClick={(e) => {
-            e.preventDefault();
-            showAnnotation(stopData.id);
-          }}
-        >
-          <BiCommentAdd />
-          <CommentCount
-            shortname={Config.disqus.shortName}
-            config={{
-              url: myUrl,
-              identifier:
-                myCommentId +
-                "_0" /* https://github.com/disqus/disqus-react/issues/83 */,
-              title: myCommentId,
-              language: "en_US",
-            }}
-          >
-            {""}
-          </CommentCount>
-        </a>
-      </h2>
+      <h2>{myTitle}</h2>
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed
           src={stopData.url}
@@ -117,6 +93,30 @@ const Stop = ({
       ) : (
         <div>{JSON.stringify(stopData)}</div>
       )}
+      <h3>
+        <a
+          href="/#"
+          onClick={(e) => {
+            e.preventDefault();
+            showAnnotation(stopData.id);
+          }}
+        >
+          <BiCommentAdd />
+          <CommentCount
+            shortname={Config.disqus.shortName}
+            config={{
+              url: myUrl,
+              identifier:
+                myCommentId +
+                "_0" /* https://github.com/disqus/disqus-react/issues/83 */,
+              title: myCommentId,
+              language: "en_US",
+            }}
+          >
+            {""}
+          </CommentCount>
+        </a>
+      </h3>
     </StopWrapper>
   );
 };

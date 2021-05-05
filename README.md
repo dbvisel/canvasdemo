@@ -22,7 +22,6 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
  - graph network is probably useful visualization
  - phone presentation mode
    - force presentation mode on vw < 767px?
- - add annotation (maybe using Disqus?) https://www.npmjs.com/package/disqus-react
 
 ## Todo/Features to consider:
 
@@ -31,6 +30,7 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
    - this is kind of being done, but not very effectively
  - when a stop is selected/double-clicked, go to present mode?
  - arrow keys for moving through present mode
+   - what happens if more than one next/prev?
  - comments could be richtext/markdown?
  - could add rotation/colors/CSS styles to stops
  - smarter default placement on canvas – avoid overlap

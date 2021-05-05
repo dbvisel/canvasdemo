@@ -23,17 +23,25 @@ export const StopWrapper = styled.div`
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+  }
+  & h3 {
+    margin: var(--innerMargin) 0 0 0;
+    font-size: 16px;
+    text-align: right;
+    line-height: 16px;
     & a {
+      display: inline-flex;
+      align-items: center;
       opacity: 0.5;
       transition: 0.25s;
       color: var(--text);
-      display: inline-block;
       text-decoration: none;
+      & > svg + span {
+        margin-left: 8px;
+      }
       &:hover {
         opacity: 1;
       }
     }
-  }
-  & .selected {
   }
 `;
