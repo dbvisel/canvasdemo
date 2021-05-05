@@ -13,5 +13,16 @@ export const HeaderDiv = styled.header`
     display: inline-flex;
     width: 100%;
     justify-content: space-between;
+    & span {
+      & > a {
+        margin-left: 8px;
+        opacity: 0.5;
+        color: var(--text);
+        transition: 0.5s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
 `;

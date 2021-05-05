@@ -11,6 +11,7 @@ const WalkMode = ({
   selectedStop,
   setSelectedStop,
   walks,
+  showAnnotation,
 }) => {
   const [flag, setFlag] = React.useState(false);
   const canvas = React.useRef();
@@ -99,6 +100,7 @@ const WalkMode = ({
             stops={currentWalk.stops}
             selectedStop={selectedStop}
             setSelectedStop={setSelectedStop}
+            showAnnotation={showAnnotation}
           />
         </main>
       </DndProvider>

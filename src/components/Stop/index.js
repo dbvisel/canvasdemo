@@ -1,5 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import { BiCommentAdd } from "react-icons/bi";
 import VideoEmbed from "./../VideoEmbed";
 import AudioEmbed from "./../AudioEmbed";
 import BookEmbed from "./../BookEmbed";
@@ -8,7 +9,13 @@ import CommentStop from "./../CommentStop";
 import { StopWrapper } from "./elements";
 import { ItemTypes } from "./../Walk";
 
-const Stop = ({ index, stopData, selectedStop, selectThis }) => {
+const Stop = ({
+  index,
+  stopData,
+  selectedStop,
+  selectThis,
+  showAnnotation,
+}) => {
   const myTitle = stopData.title || `Stop ${index + 1}`;
 
   const [, /*{ isDragging }, */ drag] = useDrag(
@@ -41,7 +48,18 @@ const Stop = ({ index, stopData, selectedStop, selectThis }) => {
       }}
       ref={drag}
     >
-      <h2>{myTitle}</h2>
+      <h2>
+        {myTitle}
+        <a
+          href="/#"
+          onClick={(e) => {
+            e.preventDefault();
+            showAnnotation(stopData.id);
+          }}
+        >
+          <BiCommentAdd />
+        </a>
+      </h2>
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed
           src={stopData.url}

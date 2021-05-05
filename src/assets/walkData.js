@@ -2,6 +2,10 @@
  *
  * A walk consists of an array of stops and some basic metadata
  *
+ * id: string, a unique ID, required
+ * title, string, the title for the walk
+ * stops: an array of stops, required
+ *
  * Each stop consists of:
  *
  * id: string, a unique ID for the stop, required
