@@ -43,7 +43,7 @@ const Header = ({
         </a>
       </h1>
       <p>
-        Choose a walk:
+        Choose a walk:{" "}
         <select
           selected={currentWalk.id} /* This is working poorly! */
           onChange={(e) => {

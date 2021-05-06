@@ -12,14 +12,24 @@ const App = () => {
   const [presentationMode, setPresentationMode] = React.useState(false);
   const [annotationShown, setAnnotationShown] = React.useState(false);
   const [annotationId, setAnnotationId] = React.useState(walkData.walks[0].id);
+  const [annotationTitle, setAnnotationTitle] = React.useState(
+    walkData.walks[0].title
+  );
 
   React.useEffect(() => {
     if (selectedStop) {
+      const thisStop = currentWalk.stops.filter(
+        (x) => x.id === selectedStop
+      )[0];
       setAnnotationId(currentWalk.id + "-" + selectedStop);
+      setAnnotationTitle(
+        thisStop.title || `Stop ${currentWalk.stops.indexOf(thisStop) + 1}`
+      );
     } else {
       setAnnotationId(currentWalk.id);
+      setAnnotationTitle(currentWalk.title);
     }
-  }, [selectedStop, currentWalk.id]);
+  }, [selectedStop, currentWalk]);
 
   return (
     <Layout>
@@ -54,6 +64,7 @@ const App = () => {
       )}
       <AnnotationPopUp
         id={annotationId}
+        annotationTitle={annotationTitle}
         visible={annotationShown}
         closeAnnotation={() => {
           setAnnotationShown(false);

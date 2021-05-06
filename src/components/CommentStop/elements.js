@@ -17,5 +17,6 @@ export const CommentStopDiv = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    line-height: 40px;
   }
 `;

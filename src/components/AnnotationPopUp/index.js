@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { AnnotationWrapper } from "./elements";
 import Config from "./../../config.js";
 
-const AnnotationPopUp = ({ id, visible, closeAnnotation }) => {
+const AnnotationPopUp = ({ id, annotationTitle, visible, closeAnnotation }) => {
   const myUrl = `${Config.disqus.url}/${id}`;
   return (
     <AnnotationWrapper visible={visible}>
@@ -18,7 +18,7 @@ const AnnotationPopUp = ({ id, visible, closeAnnotation }) => {
         <AiOutlineClose />
       </a>
       <div>
-        <h2>{id}</h2>
+        <h2>{annotationTitle}</h2>
         <DiscussionEmbed
           key={id}
           shortname={Config.disqus.shortName}
