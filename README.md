@@ -9,7 +9,6 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 ## Issues
 
  - Throbbers aren't wonderful.
- - Canvas size: width right now is 2000px, though it should be changed dynamically (greatest stop's X plus that stop's width plus inner margin)
  - Dragging isn't wonderful & I suspect there's something buggy in my implementation of it.
  - Performance isn't wonderful because it's a bunch of iframes! 
 

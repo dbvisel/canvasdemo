@@ -103,6 +103,7 @@ const Stop = ({
       <h3>
         <a
           href="/#"
+          className="comment"
           onClick={(e) => {
             e.preventDefault();
             showAnnotation(stopData.id);

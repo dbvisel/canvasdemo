@@ -21,6 +21,7 @@ const Header = ({
         {currentWalk.title}
         <a
           href="/#"
+          className="comment"
           onClick={(e) => {
             e.preventDefault();
             setAnnotationShown(true);

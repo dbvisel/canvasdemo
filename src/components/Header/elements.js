@@ -22,6 +22,9 @@ export const HeaderDiv = styled.header`
       font-size: 24px;
       display: inline-flex;
       align-items: center;
+      & > svg + span {
+        margin-left: 8px;
+      }
       &:hover {
         opacity: 1;
       }
