@@ -74,6 +74,7 @@ const Header = ({
         >
           <option value="walk">Walk</option>
           <option value="presentation">Presentation</option>
+          <option value="graph">Graph</option>
         </select>
       </p>
     </HeaderDiv>

@@ -17,10 +17,10 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
  - This is fake content and not actually compelling! 
  - add additional embed types:
    - image carousel? Is that essential?
- - graph network is probably useful visualization
  - phone presentation mode
    - force presentation mode on vw < 767px?
  - stops probably need names (for mutliple previous/next stops) 
+   - need to deal with this in graph mode!
 
 ## Todo/Features to consider:
 

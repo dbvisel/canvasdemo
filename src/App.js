@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 import PresentationMode from "./components/PresentationMode";
 import WalkMode from "./components/WalkMode";
+import GraphMode from "./components/GraphMode";
 import AnnotationPopUp from "./components/AnnotationPopUp";
 import walkData from "./assets/walkData";
 
@@ -51,7 +52,7 @@ const App = () => {
           selectedStop={selectedStop}
           setSelectedStop={setSelectedStop}
         />
-      ) : (
+      ) : mode === "walk" ? (
         <WalkMode
           currentWalk={currentWalk}
           selectedStop={selectedStop}
@@ -60,6 +61,12 @@ const App = () => {
             setAnnotationId(currentWalk.id + "-" + x);
             setAnnotationShown(true);
           }}
+        />
+      ) : (
+        <GraphMode
+          currentWalk={currentWalk}
+          selectedStop={selectedStop}
+          setSelectedStop={setSelectedStop}
         />
       )}
       <AnnotationPopUp
