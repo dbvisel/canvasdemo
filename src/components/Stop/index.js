@@ -8,6 +8,7 @@ import AudioEmbed from "./../AudioEmbed";
 import BookEmbed from "./../BookEmbed";
 import ImageEmbed from "./../ImageEmbed";
 import CommentStop from "./../CommentStop";
+import SoftwareEmbed from "./../SoftwareEmbed";
 import { StopWrapper } from "./elements";
 import { ItemTypes } from "./../Walk";
 
@@ -90,6 +91,12 @@ const Stop = ({
           width={stopData.width}
           height={stopData.height}
         />
+      ) : stopData.type && stopData.type === "software" ? (
+        <SoftwareEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+        />
       ) : (
         <div>{JSON.stringify(stopData)}</div>
       )}
@@ -112,9 +119,7 @@ const Stop = ({
               title: myCommentId,
               language: "en_US",
             }}
-          >
-            {""}
-          </CommentCount>
+          ></CommentCount>
         </a>
       </h3>
     </StopWrapper>

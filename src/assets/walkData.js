@@ -130,7 +130,7 @@ const walkData = {
     },
     {
       id: "walk1",
-      title: "Sample Walk 2",
+      title: "Loop demo",
       author: "Dan Visel",
       date: "25 April 2021",
       stops: [
@@ -244,6 +244,32 @@ const walkData = {
           isStopPoint: true,
           top: 710,
           left: 10,
+        },
+      ],
+    },
+    {
+      id: "walk2",
+      title: "Software embed demo",
+      author: "Dan Visel",
+      date: "6 May 2021",
+      stops: [
+        {
+          id: "stop8",
+          type: "comment",
+          title: "Here's something to try",
+          text:
+            "We can also embed software running in an emulator. (Note that if that's too loud, press the space bar to pause it – and ESC to get your pointer back.",
+          isStartPoint: true,
+        },
+        {
+          id: "stop2_1",
+          title: "The Secret of Monkey Island",
+          type: "software",
+          url: "https://archive.org/embed/mnkyega",
+          top: 10,
+          left: 300,
+          width: 640,
+          heigh: 480,
         },
       ],
     },

@@ -17,15 +17,16 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 
  - This is fake content and not actually compelling! 
  - add additional embed types:
-   - software
    - image carousel? Is that essential?
  - graph network is probably useful visualization
  - phone presentation mode
    - force presentation mode on vw < 767px?
+ - stops probably need names (for mutliple previous/next stops) 
 
 ## Todo/Features to consider:
 
  - still —> iframe. Could this be dynamically generated?
+   - could write a Node script that uses this: https://github.com/sindresorhus/capture-website to process walkData.js and make images with filename set to ID; that would be run as a build step.
  - when a stop is selected, auto-center the canvas?
    - this is kind of being done, but not very effectively
  - when a stop is selected/double-clicked, go to present mode?
@@ -41,4 +42,5 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 
 ## Remember/reference
 
- * Embedding on Internet Archive: https://archive.org/help/video.php
+ - Embedding on Internet Archive: https://archive.org/help/video.php
+   - note that contains instructions on playlists 
