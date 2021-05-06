@@ -47,7 +47,7 @@ const Stop = ({
       id={stopData.id}
       top={stopData.top}
       left={stopData.left}
-      className={selectedStop === stopData.id ? "selected" : ""}
+      className={`stop ${selectedStop === stopData.id ? "selected" : ""}`}
       onClick={(e) => {
         e.stopPropagation();
         selectThis(stopData.id);

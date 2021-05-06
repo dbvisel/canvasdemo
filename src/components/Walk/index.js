@@ -12,6 +12,9 @@ const Walk = ({
   walkId,
 }) => {
   const [boxes, setBoxes] = React.useState([]);
+  const [myWidth, setMyWidth] = React.useState("100%");
+  const [myHeight, setMyHeight] = React.useState("100%");
+  const innerCanvas = React.useRef(null);
 
   React.useEffect(() => {
     if (!boxes.length) {
@@ -55,21 +58,43 @@ const Walk = ({
     [moveBox]
   );
 
+  React.useEffect(() => {
+    //TODO: make this fire when everything has been drawn!
+    if (innerCanvas.current) {
+      const stops = innerCanvas.current.querySelectorAll(".stop");
+      if (stops.length) {
+        let rightMost = 0;
+        let bottomMost = 0;
+        for (let i = 0; i < stops.length; i++) {
+          const thisSize = stops[i].getBoundingClientRect();
+          rightMost = Math.max(rightMost, thisSize.x + thisSize.width);
+          bottomMost = Math.max(bottomMost, thisSize.y + thisSize.height);
+        }
+        console.log(rightMost, bottomMost);
+        const padding = 100;
+        setMyWidth(rightMost + padding + "px");
+        setMyHeight(bottomMost + padding + "px");
+      }
+    }
+  }, []);
+
   return (
-    <div ref={drop} style={{ width: "100%", height: "100%" }}>
-      {boxes.map((stop, index) => (
-        <Stop
-          key={stop.id}
-          index={index}
-          stopData={stop}
-          selectedStop={selectedStop}
-          showAnnotation={showAnnotation}
-          selectThis={() => {
-            setSelectedStop(stop.id);
-          }}
-          walkId={walkId}
-        />
-      ))}
+    <div style={{ width: myWidth, height: myHeight }} ref={innerCanvas}>
+      <div ref={drop} style={{ width: "100%", height: "100%" }}>
+        {boxes.map((stop, index) => (
+          <Stop
+            key={stop.id}
+            index={index}
+            stopData={stop}
+            selectedStop={selectedStop}
+            showAnnotation={showAnnotation}
+            selectThis={() => {
+              setSelectedStop(stop.id);
+            }}
+            walkId={walkId}
+          />
+        ))}
+      </div>
     </div>
   );
 };

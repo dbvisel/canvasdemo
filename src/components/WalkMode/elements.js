@@ -48,11 +48,19 @@ export const WalkModeWrapper = styled.div`
     overflow-x: scroll;
     overflow-y: scroll;
     position: relative;
-    width: calc(100vw - var(--navWidth));
+    width: 100vw;
+    height: calc(100vh - var(--headerHeight));
     -webkit-overflow-scrolling: touch;
     transition: 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     & > div {
-      min-width: 200%; /*this should be dynamically set */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
     }
   }
 `;
