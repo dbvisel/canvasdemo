@@ -5,46 +5,66 @@ import { HeaderDiv } from "./elements";
 import Config from "./../../config";
 
 const Header = ({
-  title,
-  id,
+  currentWalk,
+  setCurrentWalk,
+  setSelectedStop,
   presentationMode,
   setPresentationMode,
   setAnnotationShown,
+  walks,
 }) => {
-  const myUrl = `${Config.disqus.url}/${id}`;
+  const [flag, setFlag] = React.useState(false);
+  const myUrl = `${Config.disqus.url}/${currentWalk.id}`;
   return (
     <HeaderDiv>
       <h1>
-        <span>
-          {title}
-          <a
-            href="/#"
-            onClick={(e) => {
-              e.preventDefault();
-              setAnnotationShown(true);
+        {currentWalk.title}
+        <a
+          href="/#"
+          onClick={(e) => {
+            e.preventDefault();
+            setAnnotationShown(true);
+          }}
+        >
+          <BiCommentAdd />
+          <CommentCount
+            shortname={Config.disqus.shortName}
+            config={{
+              url: myUrl,
+              identifier:
+                currentWalk.id +
+                "_0" /* https://github.com/disqus/disqus-react/issues/83 */,
+              title: currentWalk.id,
+              language: "en_US",
             }}
           >
-            <BiCommentAdd />
-            <CommentCount
-              shortname={Config.disqus.shortName}
-              config={{
-                url: myUrl,
-                identifier:
-                  id +
-                  "_0" /* https://github.com/disqus/disqus-react/issues/83 */,
-                title: id,
-                language: "en_US",
-              }}
-            >
-              {""}
-            </CommentCount>
-          </a>
-        </span>
-        <button onClick={() => setPresentationMode(!presentationMode)}>
-          {presentationMode ? "Leave" : "Enter"}
-          {" presentation mode"}
-        </button>
+            {""}
+          </CommentCount>
+        </a>
       </h1>
+      <p>
+        Choose a walk:
+        <select
+          selected={currentWalk.id} /* This is working poorly! */
+          onChange={(e) => {
+            e.preventDefault();
+            // console.log(`Changing to ${e.target.value}`);
+            setCurrentWalk(walks.filter((x) => x.id === e.target.value)[0]);
+            setSelectedStop("");
+            setFlag(() => !flag);
+          }}
+        >
+          {walks.map((walk) => (
+            <option key={walk.id} name={walk.id} value={walk.id}>
+              {walk.title}
+            </option>
+          ))}
+        </select>
+      </p>
+      <button onClick={() => setPresentationMode(!presentationMode)}>
+        {presentationMode ? "Leave" : "Enter"}
+        {" presentation mode"}
+      </button>
     </HeaderDiv>
   );
 };

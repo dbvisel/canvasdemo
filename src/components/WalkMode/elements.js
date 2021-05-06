@@ -5,13 +5,21 @@ export const WalkModeWrapper = styled.div`
   min-height: 100%;
   min-width: 100%;
   & > nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: var(--backgroundColor);
     box-sizing: border-box;
-    min-width: var(--navWidth);
-    padding: 0 var(--innerMargin) var(--outerMargin) var(--outerMargin);
+    max-width: var(--navWidth);
+    transition: 0.5s;
+    padding: var(--innerMargin) var(--innerMargin) var(--outerMargin)
+      var(--outerMargin);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: calc(100vh - var(--headerHeight)); // where does this 75 come from?
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-top-right-radius: var(--innerMargin);
     & > div + div {
       margin-top: var(--outerMargin);
     }
@@ -36,7 +44,6 @@ export const WalkModeWrapper = styled.div`
   & > main {
     min-width: 100%;
     padding: var(--outerMargin);
-    border-top-left-radius: var(--innerMargin);
     background-color: var(--black);
     overflow-x: scroll;
     overflow-y: scroll;

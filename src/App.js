@@ -24,10 +24,12 @@ const App = () => {
   return (
     <Layout>
       <Header
-        title={currentWalk.title || ""}
-        id={currentWalk.id}
+        walks={walkData.walks}
         presentationMode={presentationMode}
+        currentWalk={currentWalk}
+        setCurrentWalk={setCurrentWalk}
         setPresentationMode={setPresentationMode}
+        setSelectedStop={setSelectedStop}
         setAnnotationShown={() => {
           setAnnotationId(currentWalk.id);
           setAnnotationShown(true);
@@ -42,10 +44,8 @@ const App = () => {
       ) : (
         <WalkMode
           currentWalk={currentWalk}
-          setCurrentWalk={setCurrentWalk}
           selectedStop={selectedStop}
           setSelectedStop={setSelectedStop}
-          walks={walkData.walks}
           showAnnotation={(x) => {
             setAnnotationId(currentWalk.id + "-" + x);
             setAnnotationShown(true);

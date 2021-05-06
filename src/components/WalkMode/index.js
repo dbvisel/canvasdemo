@@ -7,13 +7,10 @@ import { WalkModeWrapper } from "./elements";
 
 const WalkMode = ({
   currentWalk,
-  setCurrentWalk,
   selectedStop,
   setSelectedStop,
-  walks,
   showAnnotation,
 }) => {
-  const [flag, setFlag] = React.useState(false);
   const canvas = React.useRef();
   const myStartPoints = currentWalk.stops.filter((x) => x.isStartPoint);
 
@@ -40,25 +37,6 @@ const WalkMode = ({
   return (
     <WalkModeWrapper key={currentWalk.id} id="walkmode">
       <nav>
-        <div>
-          <h2>Choose a walk:</h2>
-          <select
-            selected={currentWalk.id} /* This is working poorly! */
-            onChange={(e) => {
-              e.preventDefault();
-              // console.log(`Changing to ${e.target.value}`);
-              setCurrentWalk(walks.filter((x) => x.id === e.target.value)[0]);
-              setSelectedStop("");
-              setFlag(() => !flag);
-            }}
-          >
-            {walks.map((walk) => (
-              <option key={walk.id} name={walk.id} value={walk.id}>
-                {walk.title}
-              </option>
-            ))}
-          </select>
-        </div>
         {myStartPoints ? (
           <div>
             <h2>Go to start:</h2>
@@ -90,7 +68,7 @@ const WalkMode = ({
       <DndProvider backend={HTML5Backend}>
         <main
           ref={canvas}
-          key={flag ? `dummy_${currentWalk.id}` : `dummy2_${currentWalk.id}`}
+          key={`dummy_${currentWalk.id}`}
           onClick={(e) => {
             e.preventDefault();
             setSelectedStop("");
