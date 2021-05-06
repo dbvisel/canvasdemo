@@ -9,7 +9,7 @@ import walkData from "./assets/walkData";
 const App = () => {
   const [selectedStop, setSelectedStop] = React.useState("");
   const [currentWalk, setCurrentWalk] = React.useState(walkData.walks[0]);
-  const [presentationMode, setPresentationMode] = React.useState(false);
+  const [mode, setMode] = React.useState("walk");
   const [annotationShown, setAnnotationShown] = React.useState(false);
   const [annotationId, setAnnotationId] = React.useState(walkData.walks[0].id);
   const [annotationTitle, setAnnotationTitle] = React.useState(
@@ -35,17 +35,17 @@ const App = () => {
     <Layout>
       <Header
         walks={walkData.walks}
-        presentationMode={presentationMode}
         currentWalk={currentWalk}
         setCurrentWalk={setCurrentWalk}
-        setPresentationMode={setPresentationMode}
+        mode={mode}
+        setMode={setMode}
         setSelectedStop={setSelectedStop}
         setAnnotationShown={() => {
           setAnnotationId(currentWalk.id);
           setAnnotationShown(true);
         }}
       />
-      {presentationMode ? (
+      {mode === "presentation" ? (
         <PresentationMode
           currentWalk={currentWalk}
           selectedStop={selectedStop}

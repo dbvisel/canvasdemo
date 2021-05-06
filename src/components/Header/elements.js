@@ -10,7 +10,7 @@ export const HeaderDiv = styled.header`
   align-items: center;
   justify-content: space-between;
   & h1 {
-    margin: 0;
+    margin: 0 auto 0 0;
     display: inline-flex;
     justify-content: space-between;
     & > a {
@@ -28,6 +28,12 @@ export const HeaderDiv = styled.header`
       &:hover {
         opacity: 1;
       }
+    }
+  }
+  & p {
+    margin: 0;
+    & + p {
+      margin-left: 1em;
     }
   }
 `;

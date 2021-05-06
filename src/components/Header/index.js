@@ -8,8 +8,8 @@ const Header = ({
   currentWalk,
   setCurrentWalk,
   setSelectedStop,
-  presentationMode,
-  setPresentationMode,
+  mode,
+  setMode,
   setAnnotationShown,
   walks,
 }) => {
@@ -62,10 +62,20 @@ const Header = ({
           ))}
         </select>
       </p>
-      <button onClick={() => setPresentationMode(!presentationMode)}>
-        {presentationMode ? "Leave" : "Enter"}
-        {" presentation mode"}
-      </button>
+      <p>
+        Choose mode:{" "}
+        <select
+          selected={mode}
+          onChange={(e) => {
+            e.preventDefault();
+            setMode(e.target.value);
+            setFlag(() => !flag);
+          }}
+        >
+          <option value="walk">Walk</option>
+          <option value="presentation">Presentation</option>
+        </select>
+      </p>
     </HeaderDiv>
   );
 };
