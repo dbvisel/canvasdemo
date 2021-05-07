@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
+/* TODO: make this adjustable width? */
+
 export const AnnotationWrapper = styled.div`
-  --annotationWidth: 350px;
+  --annotationWidth: 50vw;
   box-sizing: border-box;
   position: fixed;
   top: 0;
