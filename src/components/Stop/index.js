@@ -7,6 +7,7 @@ import VideoEmbed from "./../VideoEmbed";
 import AudioEmbed from "./../AudioEmbed";
 import BookEmbed from "./../BookEmbed";
 import ImageEmbed from "./../ImageEmbed";
+import WebEmbed from "./../WebEmbed";
 import CommentStop from "./../CommentStop";
 import SoftwareEmbed from "./../SoftwareEmbed";
 import { StopWrapper } from "./elements";
@@ -80,7 +81,7 @@ const Stop = ({
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "web" ? (
-        <ImageEmbed
+        <WebEmbed
           src={stopData.url}
           width={stopData.width}
           height={stopData.height}

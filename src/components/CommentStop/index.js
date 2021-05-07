@@ -7,7 +7,7 @@ const CommentStop = ({ text, presentationMode, isStartPoint, isStopPoint }) => (
     isStartPoint={isStartPoint}
     isStopPoint={isStopPoint}
   >
-    {text}
+    <div>{text}</div>
   </CommentStopDiv>
 );
 

@@ -5,6 +5,8 @@ import BookEmbed from "./../BookEmbed";
 import ImageEmbed from "./../ImageEmbed";
 import CommentStop from "./../CommentStop";
 import SelectedStop from "./../SelectedStop";
+import SoftwareEmbed from "./../SoftwareEmbed";
+import WebEmbed from "./../WebEmbed";
 import { PresentationModeDiv, PresentationStopWrapper } from "./elements";
 
 const PresentationStop = ({ stopData }) => {
@@ -41,7 +43,14 @@ const PresentationStop = ({ stopData }) => {
           presentationMode
         />
       ) : stopData.type && stopData.type === "web" ? (
-        <ImageEmbed
+        <WebEmbed
+          src={stopData.url}
+          width={stopData.width}
+          height={stopData.height}
+          presentationMode
+        />
+      ) : stopData.type && stopData.type === "software" ? (
+        <SoftwareEmbed
           src={stopData.url}
           width={stopData.width}
           height={stopData.height}

@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import oval from "./../../images/oval.svg";
 
-export const AudioEmbedWrapper = styled.div`
-  /* background: url(${oval}) center center no-repeat;
-  background-size: contain; */
+export const WebEmbedWrapper = styled.div`
+  background: url(${oval}) center center no-repeat;
+  background-size: 200px 200px;
+  width: ${(props) =>
+    props.wrapperWidth ? props.wrapperWidth + "px" : "100%"};
   ${(props) => props.presentationMode && "min-height: 100%;"}
   ${(props) => props.presentationMode && "height: 100%;"}
-  ${(props) => props.presentationMode && "width: 100%;"}
-	display: flex;
-  justify-content: center;
-  align-items: center;
-  /* & iframe {
+  & iframe {
     ${(props) => props.presentationMode && "min-height: 100%;"}
     ${(props) => props.presentationMode && "height: 100%;"}
-  } */
+  }
 `;

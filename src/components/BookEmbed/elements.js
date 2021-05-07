@@ -6,6 +6,7 @@ export const BookEmbedWrapper = styled.div`
   background-size: contain;
   ${(props) => props.presentationMode && "min-height: 100%;"}
   ${(props) => props.presentationMode && "height: 100%;"}
+  ${(props) => props.presentationMode && "width: 100%;"}
   & iframe {
     ${(props) => props.presentationMode && "min-height: 100%;"}
     ${(props) => props.presentationMode && "height: 100%;"}

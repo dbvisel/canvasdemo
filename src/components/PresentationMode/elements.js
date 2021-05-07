@@ -34,4 +34,10 @@ export const PresentationStopWrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: var(--innerMargin);
+  padding: 0;
+  border-radius: var(--innerMargin);
+  --stopColor: var(--highlightColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

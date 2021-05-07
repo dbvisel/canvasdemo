@@ -6,7 +6,7 @@ const AudioEmbed = ({ src, width = 640, height = 30, presentationMode }) => (
     <iframe
       src={src}
       width={presentationMode ? "100%" : width}
-      height={presentationMode ? "100%" : height}
+      height={height}
       frameBorder="0"
       webkitallowfullscreen="true"
       mozallowfullscreen="true"

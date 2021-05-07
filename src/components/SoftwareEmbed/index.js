@@ -7,7 +7,11 @@ const SoftwareEmbed = ({
   height = 480,
   presentationMode,
 }) => (
-  <SoftwareEmbedWrapper presentationMode={presentationMode}>
+  <SoftwareEmbedWrapper
+    presentationMode={presentationMode}
+    width={width}
+    height={height}
+  >
     <iframe
       src={src}
       width={presentationMode ? "100%" : width}
