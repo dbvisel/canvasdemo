@@ -63,6 +63,7 @@ const WalkMode = ({
             currentWalk={currentWalk}
             stop={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
             setSelectedStop={setSelectedStop}
+            setPresentationMode={setPresentationMode}
           />
         ) : null}
       </nav>

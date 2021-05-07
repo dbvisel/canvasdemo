@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const StopWrapper = styled.div`
   background-color: var(--white);
+  box-sizing: border-box;
   color: var(--text);
   position: absolute;
   top: ${(props) => props.top || 0}px;
   left: ${(props) => props.left || 0}px;
   padding: var(--innerMargin);
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--lineColor);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border: 4px solid transparent;
   transition: 0.25s;
   cursor: pointer;
   &.selected {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-color: var(--highlightColor);
-    border-width: 4px;
     z-index: 9;
   }
   & h2 {

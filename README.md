@@ -13,7 +13,7 @@ Still images are generated with a build step: _npm run make-images_, which scree
  - Throbbers aren't wonderful.
  - Dragging isn't wonderful & I suspect there's something buggy in my implementation of it.
  - Performance isn't wonderful because it's a bunch of iframes! 
- - if you maximize, header select doesn't notice.
+ - if you maximize/go to present mode, header select doesn't notice.
 
 ## Demo needs
 
@@ -22,14 +22,13 @@ Still images are generated with a build step: _npm run make-images_, which scree
    - image carousel? Is that essential?
  - phone presentation mode
    - force presentation mode on vw < 767px?
- - stops probably need names (for mutliple previous/next stops) 
+ - next/prev stops probably need names (for mutliple previous/next stops) 
    - need to deal with this in graph mode!
 
 ## Todo/Features to consider:
 
  - when a stop is selected, auto-center the canvas?
    - this is kind of being done, but not very effectively
- - when a stop is selected/double-clicked, go to present mode?
  - arrow keys for moving through present mode
    - what happens if more than one next/prev?
  - comments could be richtext/markdown?
@@ -38,7 +37,6 @@ Still images are generated with a build step: _npm run make-images_, which scree
  - Internet Archive URL scheme: right now this is just taking the embed link and not processing that in any way. We could turn, for example, "1up" or "2up" in the book reader into a separate parameter.
  - maybe different visualizations?
    - CSS grid
-   - graph network with arrows
 
 ## Remember/reference
 

@@ -3,7 +3,12 @@ import Graph from "react-graph-vis";
 import SelectedStop from "./../SelectedStop";
 import { GraphModeDiv } from "./elements";
 
-const GraphMode = ({ currentWalk, selectedStop, setSelectedStop }) => {
+const GraphMode = ({
+  currentWalk,
+  selectedStop,
+  setSelectedStop,
+  setPresentationMode,
+}) => {
   const [graph, setGraph] = React.useState(null);
   const [walkId, setWalkId] = React.useState(currentWalk.id);
   const graphElement = React.useRef();
@@ -81,6 +86,7 @@ const GraphMode = ({ currentWalk, selectedStop, setSelectedStop }) => {
             currentWalk={currentWalk}
             stop={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
             setSelectedStop={setSelectedStop}
+            setPresentationMode={setPresentationMode}
           />
         ) : null}
       </nav>

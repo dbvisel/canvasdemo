@@ -1,7 +1,13 @@
 import React from "react";
 import { SelectedStopDiv } from "./elements";
 
-const SelectedStop = ({ stop, setSelectedStop, currentWalk, isBottom }) => {
+const SelectedStop = ({
+  stop,
+  setSelectedStop,
+  setPresentationMode,
+  currentWalk,
+  isBottom,
+}) => {
   const getPreviousStop = (id) => {
     const previousStops = [];
     for (let i = 0; i < currentWalk.stops.length; i++) {
@@ -38,11 +44,19 @@ const SelectedStop = ({ stop, setSelectedStop, currentWalk, isBottom }) => {
           <strong className="verticalonly">Name: </strong>{" "}
           {stop.title || `Stop ${currentWalk.stops.indexOf(stop) + 1}`}
         </p>
-        {stop.text ? (
-          <p className="verticalonly">
-            <strong>Text:</strong> {stop.text}
-          </p>
+        {!isBottom ? (
+          <React.Fragment>
+            <button
+              onClick={() => {
+                setPresentationMode(true);
+              }}
+            >
+              Presentation mode
+            </button>
+            <hr />
+          </React.Fragment>
         ) : null}
+        {stop.text ? <p className="verticalonly">{stop.text}</p> : null}
       </div>
       {/*<p>{JSON.stringify(stop)}</p>*/}
       {!isBottom

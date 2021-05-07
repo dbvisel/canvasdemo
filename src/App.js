@@ -72,6 +72,9 @@ const App = () => {
           currentWalk={currentWalk}
           selectedStop={selectedStop}
           setSelectedStop={setSelectedStop}
+          setPresentationMode={() => {
+            setMode("presentation");
+          }}
         />
       )}
       <AnnotationPopUp
