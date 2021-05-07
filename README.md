@@ -6,11 +6,14 @@ This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or 
 
 To run this locally, _npm install_, then _npm start_. Build with _npm run build_.
 
+Still images are generated with a build step: _npm run make-images_, which screenshots all the images and puts them in _/public/images_.
+
 ## Issues
 
  - Throbbers aren't wonderful.
  - Dragging isn't wonderful & I suspect there's something buggy in my implementation of it.
  - Performance isn't wonderful because it's a bunch of iframes! 
+ - if you maximize, header select doesn't notice.
 
 ## Demo needs
 
@@ -24,8 +27,6 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 
 ## Todo/Features to consider:
 
- - still —> iframe. Could this be dynamically generated?
-   - could write a Node script that uses this: https://github.com/sindresorhus/capture-website to process walkData.js and make images with filename set to ID; that would be run as a build step.
  - when a stop is selected, auto-center the canvas?
    - this is kind of being done, but not very effectively
  - when a stop is selected/double-clicked, go to present mode?
