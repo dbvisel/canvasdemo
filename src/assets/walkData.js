@@ -270,7 +270,7 @@ const walkData = {
           top: 10,
           left: 300,
           width: 640,
-          heigh: 480,
+          height: 480,
         },
       ],
     },

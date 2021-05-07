@@ -66,6 +66,7 @@ const Header = ({
         Choose mode:{" "}
         <select
           selected={mode}
+          key={mode}
           onChange={(e) => {
             e.preventDefault();
             setMode(e.target.value);

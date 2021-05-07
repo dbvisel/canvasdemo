@@ -7,7 +7,7 @@ export const VideoEmbedWrapper = styled.div`
   ${(props) => props.presentationMode && "min-height: 100%;"}
   ${(props) => props.presentationMode && "height: 100%;"}
   ${(props) => props.presentationMode && "width: 100%;"}
-  & iframe {
+  & iframe, & img {
     ${(props) => props.presentationMode && "min-height: 100%;"}
     ${(props) => props.presentationMode && "height: 100%;"}
   }

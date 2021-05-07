@@ -9,14 +9,15 @@ import SoftwareEmbed from "./../SoftwareEmbed";
 import WebEmbed from "./../WebEmbed";
 import { PresentationModeDiv, PresentationStopWrapper } from "./elements";
 
-const PresentationStop = ({ stopData }) => {
-  console.log(stopData);
+const PresentationStop = ({ stopData, walkId }) => {
+  const myCommentId = walkId + "-" + stopData.id;
 
   return (
     <PresentationStopWrapper>
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -24,6 +25,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "audio" ? (
         <AudioEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -31,6 +33,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "book" ? (
         <BookEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -38,6 +41,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "image" ? (
         <ImageEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -45,6 +49,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "web" ? (
         <WebEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -52,6 +57,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "software" ? (
         <SoftwareEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
           presentationMode
@@ -59,6 +65,7 @@ const PresentationStop = ({ stopData }) => {
       ) : stopData.type && stopData.type === "comment" ? (
         <CommentStop
           text={stopData.text}
+          id={myCommentId}
           presentationMode
           width={stopData.width}
           height={stopData.height}
@@ -74,18 +81,19 @@ const PresentationStop = ({ stopData }) => {
 
 const PresentationMode = ({ currentWalk, selectedStop, setSelectedStop }) => {
   React.useEffect(() => {
-    console.log("firing useeffect");
+    // console.log("firing useeffect");
     if (selectedStop === "") {
       console.log("No stop selected!");
       // console.log(currentWalk.stops[0].id);
       setSelectedStop(currentWalk.stops[0].id);
     }
   }, [selectedStop, setSelectedStop, currentWalk]);
-  console.log(currentWalk.stops, selectedStop);
+  // console.log(currentWalk.stops, selectedStop);
   return selectedStop ? (
     <PresentationModeDiv>
       <div>
         <PresentationStop
+          walkId={currentWalk.id}
           stopData={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
         />
       </div>

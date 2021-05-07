@@ -23,6 +23,14 @@ export const StopWrapper = styled.div`
     font-size: 16px;
     display: flex;
     justify-content: space-between;
+    & a {
+      color: var(--text);
+      opacity: 0.5;
+      transition: 0.25s;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   & h3 {
     margin: var(--innerMargin) 0 0 0;

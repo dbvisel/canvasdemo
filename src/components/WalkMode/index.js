@@ -10,6 +10,7 @@ const WalkMode = ({
   selectedStop,
   setSelectedStop,
   showAnnotation,
+  setPresentationMode,
 }) => {
   const canvas = React.useRef();
   const myStartPoints = currentWalk.stops.filter((x) => x.isStartPoint);
@@ -80,6 +81,7 @@ const WalkMode = ({
             setSelectedStop={setSelectedStop}
             showAnnotation={showAnnotation}
             walkId={currentWalk.id}
+            setPresentationMode={setPresentationMode}
           />
         </main>
       </DndProvider>

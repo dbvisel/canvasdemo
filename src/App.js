@@ -16,6 +16,7 @@ const App = () => {
   const [annotationTitle, setAnnotationTitle] = React.useState(
     walkData.walks[0].title
   );
+  const [flag, setFlag] = React.useState(false);
 
   React.useEffect(() => {
     if (selectedStop) {
@@ -45,6 +46,7 @@ const App = () => {
           setAnnotationId(currentWalk.id);
           setAnnotationShown(true);
         }}
+        key={mode + String(flag)}
       />
       {mode === "presentation" ? (
         <PresentationMode
@@ -61,6 +63,9 @@ const App = () => {
             setAnnotationId(currentWalk.id + "-" + x);
             setAnnotationShown(true);
           }}
+          setPresentationMode={() => {
+            setMode("presentation");
+          }}
         />
       ) : (
         <GraphMode
@@ -75,6 +80,7 @@ const App = () => {
         visible={annotationShown}
         closeAnnotation={() => {
           setAnnotationShown(false);
+          setFlag(() => !flag);
         }}
       />
     </Layout>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { BiCommentAdd } from "react-icons/bi";
+import { FiMaximize2 } from "react-icons/fi";
 import { CommentCount } from "disqus-react";
 import Config from "./../../config";
 import VideoEmbed from "./../VideoEmbed";
@@ -20,6 +21,7 @@ const Stop = ({
   selectThis,
   showAnnotation,
   walkId,
+  setPresentationMode,
 }) => {
   const myTitle = stopData.title || `Stop ${index + 1}`;
   const myUrl = `${Config.disqus.url}/${stopData.id}`;
@@ -55,9 +57,21 @@ const Stop = ({
       }}
       ref={drag}
     >
-      <h2>{myTitle}</h2>
+      <h2>
+        {myTitle}
+        <a
+          href="/#"
+          onClick={(e) => {
+            e.preventDefault();
+            setPresentationMode(true);
+          }}
+        >
+          <FiMaximize2 />
+        </a>
+      </h2>
       {stopData.type && stopData.type === "video" ? (
         <VideoEmbed
+          id={myCommentId}
           src={stopData.url}
           width={stopData.width}
           height={stopData.height}
@@ -65,36 +79,42 @@ const Stop = ({
       ) : stopData.type && stopData.type === "audio" ? (
         <AudioEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "book" ? (
         <BookEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "image" ? (
         <ImageEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "web" ? (
         <WebEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "comment" ? (
         <CommentStop
           text={stopData.text}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />
       ) : stopData.type && stopData.type === "software" ? (
         <SoftwareEmbed
           src={stopData.url}
+          id={myCommentId}
           width={stopData.width}
           height={stopData.height}
         />

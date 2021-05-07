@@ -10,6 +10,7 @@ const Walk = ({
   setSelectedStop,
   showAnnotation,
   walkId,
+  setPresentationMode,
 }) => {
   const [boxes, setBoxes] = React.useState([]);
   const [myWidth, setMyWidth] = React.useState("100%");
@@ -88,6 +89,7 @@ const Walk = ({
             stopData={stop}
             selectedStop={selectedStop}
             showAnnotation={showAnnotation}
+            setPresentationMode={setPresentationMode}
             selectThis={() => {
               setSelectedStop(stop.id);
             }}
