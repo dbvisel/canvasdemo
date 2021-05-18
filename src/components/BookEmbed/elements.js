@@ -11,4 +11,9 @@ export const BookEmbedWrapper = styled.div`
     ${(props) => props.presentationMode && "min-height: 100%;"}
     ${(props) => props.presentationMode && "height: 100%;"}
   }
+  & > img {
+    max-width: 100%;
+    display: block;
+    overflow-wrap: anywhere;
+  }
 `;

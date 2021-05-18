@@ -31,7 +31,7 @@ const SoftwareEmbed = ({
         <img
           src={`images/${id}.png`}
           alt={src}
-          widt={width}
+          width={width}
           height={height}
           onClick={(e) => {
             e.preventDefault();

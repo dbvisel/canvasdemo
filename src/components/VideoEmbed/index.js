@@ -11,7 +11,7 @@ const VideoEmbed = ({
 }) => {
   const [loaded, setLoaded] = React.useState(false);
   return (
-    <VideoEmbedWrapper presentationMode={presentationMode}>
+    <VideoEmbedWrapper presentationMode={presentationMode} minHeight={height}>
       {presentationMode || loaded ? (
         <iframe
           src={src}
@@ -27,8 +27,8 @@ const VideoEmbed = ({
         <img
           src={`images/${id}.png`}
           alt={src}
-          widt={width}
-          height={height}
+          width={width + "px"}
+          height={height + "px"}
           onClick={(e) => {
             e.preventDefault();
             setLoaded(true);
