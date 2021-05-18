@@ -23,6 +23,12 @@ const SelectedStop = ({
     return previousStops;
   };
 
+  const getTitleFromId = (id) => {
+    const theStop = currentWalk.stops.filter((x) => x.id === id);
+    console.log(id, theStop);
+    return theStop.length && theStop[0].title ? theStop[0].title : "";
+  };
+
   const previousStop = getPreviousStop(stop.id);
   return (
     <SelectedStopDiv className={isBottom ? "horizontal" : ""}>
@@ -67,7 +73,7 @@ const SelectedStop = ({
                 setSelectedStop(prevStop);
               }}
             >
-              « Previous stop{previousStop.length > 1 ? ` ${index + 1}` : ""}
+              « {getTitleFromId(prevStop)}
             </button>
           ))
         : null}
@@ -79,7 +85,7 @@ const SelectedStop = ({
                 setSelectedStop(nextStop);
               }}
             >
-              Next stop{stop.nextStop.length > 1 ? ` ${index + 1}` : ""}
+              {getTitleFromId(nextStop)}
               {" »"}
             </button>
           ))
