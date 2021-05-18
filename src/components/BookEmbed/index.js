@@ -11,7 +11,7 @@ const BookEmbed = ({
 }) => {
   const [loaded, setLoaded] = React.useState(false);
   return (
-    <BookEmbedWrapper presentationMode={presentationMode}>
+    <BookEmbedWrapper presentationMode={presentationMode} minWidth={width}>
       {presentationMode || loaded ? (
         <iframe
           src={src}

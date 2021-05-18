@@ -11,7 +11,11 @@ const VideoEmbed = ({
 }) => {
   const [loaded, setLoaded] = React.useState(false);
   return (
-    <VideoEmbedWrapper presentationMode={presentationMode} minHeight={height}>
+    <VideoEmbedWrapper
+      presentationMode={presentationMode}
+      minHeight={height}
+      minWidth={width}
+    >
       {presentationMode || loaded ? (
         <iframe
           src={src}
