@@ -25,7 +25,6 @@ const SelectedStop = ({
 
   const getTitleFromId = (id) => {
     const theStop = currentWalk.stops.filter((x) => x.id === id);
-    console.log(id, theStop);
     return theStop.length && theStop[0].title ? theStop[0].title : "";
   };
 

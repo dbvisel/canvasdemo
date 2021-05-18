@@ -31,7 +31,7 @@ for (let i = 0; i < urlsToGet.length; i++) {
         width: thisWebsite.width,
         height: thisWebsite.height,
         type: "png",
-        delay: 5,
+        delay: 10,
       }
     );
   })();
