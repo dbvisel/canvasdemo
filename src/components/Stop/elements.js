@@ -13,6 +13,7 @@ export const StopWrapper = styled.div`
   border: 4px solid transparent;
   transition: 0.25s;
   cursor: pointer;
+  z-index: 2;
   &.selected {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-color: var(--highlightColor);

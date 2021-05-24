@@ -38,7 +38,14 @@ const WalkMode = ({
   return (
     <WalkModeWrapper key={currentWalk.id} id="walkmode">
       <nav>
-        {myStartPoints ? (
+        {selectedStop ? (
+          <SelectedStop
+            currentWalk={currentWalk}
+            stop={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
+            setSelectedStop={setSelectedStop}
+            setPresentationMode={setPresentationMode}
+          />
+        ) : myStartPoints ? (
           <div>
             <h2>Go to start:</h2>
             {myStartPoints.map((startpoint, index) => (
@@ -57,14 +64,6 @@ const WalkMode = ({
               </button>
             ))}
           </div>
-        ) : null}
-        {selectedStop ? (
-          <SelectedStop
-            currentWalk={currentWalk}
-            stop={currentWalk.stops.filter((x) => x.id === selectedStop)[0]}
-            setSelectedStop={setSelectedStop}
-            setPresentationMode={setPresentationMode}
-          />
         ) : null}
       </nav>
       <DndProvider backend={HTML5Backend}>

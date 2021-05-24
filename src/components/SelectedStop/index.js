@@ -3,6 +3,8 @@ import { SelectedStopDiv } from "./elements";
 
 const usePreviousSideTrips = false;
 
+// TODO: clean this up. It's a mess.
+
 const SelectedStop = ({
   stop,
   setSelectedStop,
@@ -45,10 +47,7 @@ const SelectedStop = ({
 
   const previousStop = getPreviousStop(stop.id);
 
-  // TODO: display previous and next side trips
   const previousSideTrips = getPreviousSideTrips(stop.id);
-  console.log("Previous side trips: ", previousSideTrips);
-  console.log("Next side trips", stop.sideTrips);
 
   return (
     <SelectedStopDiv className={isBottom ? "horizontal" : ""}>
@@ -80,6 +79,7 @@ const SelectedStop = ({
                       setSelectedStop(previousSideTrip);
                     }}
                   >
+                    <span>↖</span>
                     {getTitleFromId(previousSideTrip)}
                   </button>
                 ))
@@ -92,46 +92,59 @@ const SelectedStop = ({
                       setSelectedStop(sideTrip);
                     }}
                   >
+                    <span>↘</span>
                     {getTitleFromId(sideTrip)}
                   </button>
                 ))
               : null}
           </div>
         ) : null}
-        {!isBottom ? (
-          <React.Fragment>
-            <button
-              onClick={() => {
-                setPresentationMode(true);
-              }}
-            >
-              Presentation mode
-            </button>
-            <hr />
-          </React.Fragment>
-        ) : null}
+
         {stop.text ? <p className="verticalonly">{stop.text}</p> : null}
       </div>
       {/*<p>{JSON.stringify(stop)}</p>*/}
       {!isBottom && previousStop ? (
-        <button
-          onClick={() => {
-            setSelectedStop(previousStop);
-          }}
-        >
-          <span>←</span>
-          {getTitleFromId(previousStop)}
-        </button>
+        <div>
+          <hr className="verticalonly" />
+          <h4 className="verticalonly">Previous:</h4>
+          <button
+            onClick={() => {
+              setSelectedStop(previousStop);
+            }}
+          >
+            <span>←</span>
+            {getTitleFromId(previousStop)}
+          </button>
+        </div>
       ) : null}
       {stop.nextStop ? (
-        <button
-          onClick={() => {
-            setSelectedStop(stop.nextStop);
-          }}
-        >
-          {getTitleFromId(stop.nextStop)}
-          <span>→</span>
-        </button>
+        <div>
+          <hr className="verticalonly" />
+          <h4 className="verticalonly">Next:</h4>
+          <button
+            onClick={() => {
+              setSelectedStop(stop.nextStop);
+            }}
+          >
+            {getTitleFromId(stop.nextStop)}
+            <span>→</span>
+          </button>
+        </div>
+      ) : null}
+      {!isBottom ? (
+        <React.Fragment>
+          <div>
+            <hr />
+          </div>
+          <button
+            onClick={() => {
+              setPresentationMode(true);
+            }}
+          >
+            Presentation mode
+          </button>
+          <hr />
+        </React.Fragment>
       ) : null}
     </SelectedStopDiv>
   );

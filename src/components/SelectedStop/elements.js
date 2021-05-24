@@ -38,9 +38,14 @@ export const SelectedStopDiv = styled.div`
     & .sidetrips {
       display: flex;
       margin-top: 8px;
+      align-items: center;
       & h4,
       & button {
         margin: 0 8px 0 0;
+        & span {
+          font-size: 100%;
+          padding-bottom: 0;
+        }
       }
     }
   }

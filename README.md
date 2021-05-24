@@ -10,11 +10,11 @@ Still images are generated with a build step: _npm run make-images_, which scree
 
 ## Rework
 
-- add concept of spine, how to implement this?
-- show edges in walk mode
+- hide annotation until selected
 
 ## Issues
 
+ - lines don't update if something is dragged in walk mode
  - Throbbers aren't wonderful.
  - Dragging isn't wonderful & I suspect there's something buggy in my implementation of it.
  - Performance isn't wonderful because it's a bunch of iframes! 
