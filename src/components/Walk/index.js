@@ -1,8 +1,22 @@
 import React from "react";
 import { useDrop } from "react-dnd";
+// import walkData from "../../assets/walkData";
 import Stop from "./../Stop";
 
+//TODO: deal with sideTrips
+
 export const ItemTypes = { STOP: "stop" };
+
+const getCenter = (stop) => {
+  // TODO: deal with missing .left, .top, .width, .height
+  if (stop.width && stop.left && stop.top && stop.height) {
+    const centerX = stop.left + stop.width / 2;
+    const centerY = stop.top + stop.height / 2;
+    return { x: centerX, y: centerY };
+  }
+  console.log(stop);
+  return { x: "missing!", y: "missing!" };
+};
 
 const Walk = ({
   stops,
@@ -79,76 +93,45 @@ const Walk = ({
     }
   }, []);
 
+  const getNextStop = (id) => {
+    if (id) {
+      const results = stops.filter((x) => x.id === id);
+      if (results.length) {
+        return results[0];
+      }
+    }
+    return null;
+  };
+
   return (
     <div style={{ width: myWidth, height: myHeight }} ref={innerCanvas}>
       <div ref={drop} style={{ width: "100%", height: "100%" }}>
-        {boxes.map((stop, index) => (
-          <Stop
-            key={stop.id}
-            index={index}
-            stopData={stop}
-            selectedStop={selectedStop}
-            showAnnotation={showAnnotation}
-            setPresentationMode={setPresentationMode}
-            selectThis={() => {
-              setSelectedStop(stop.id);
-            }}
-            walkId={walkId}
-          />
-        ))}
+        {boxes.map((stop, index) => {
+          if (stop.nextStop) {
+            const nextStop = getNextStop(stop.nextStop);
+            console.log(getCenter(stop), getCenter(nextStop));
+          }
+          return (
+            <React.Fragment key={stop.id}>
+              <Stop
+                key={stop.id}
+                index={index}
+                stopData={stop}
+                selectedStop={selectedStop}
+                showAnnotation={showAnnotation}
+                setPresentationMode={setPresentationMode}
+                selectThis={() => {
+                  setSelectedStop(stop.id);
+                }}
+                walkId={walkId}
+              />
+              {stop.nextStop ? <div></div> : null}
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default Walk;
-
-/**
- * 
-
-import { useCallback, useState } from 'react';
-import { useDrop } from 'react-dnd';
-import { ItemTypes } from './ItemTypes';
-import { Box } from './Box';
-import update from 'immutability-helper';
-const styles = {
-    width: 300,
-    height: 300,
-    border: '1px solid black',
-    position: 'relative',
-};
-export const Container = ({ hideSourceOnDrag }) => {
-    const [boxes, setBoxes] = useState({
-        a: { top: 20, left: 80, title: 'Drag me around' },
-        b: { top: 180, left: 20, title: 'Drag me too' },
-    });
-    const moveBox = useCallback((id, left, top) => {
-        setBoxes(update(boxes, {
-            [id]: {
-                $merge: { left, top },
-            },
-        }));
-    }, [boxes, setBoxes]);
-    const [, drop] = useDrop(() => ({
-        accept: ItemTypes.BOX,
-        drop(item, monitor) {
-            const delta = monitor.getDifferenceFromInitialOffset();
-            const left = Math.round(item.left + delta.x);
-            const top = Math.round(item.top + delta.y);
-            moveBox(item.id, left, top);
-            return undefined;
-        },
-    }), [moveBox]);
-    return (<div ref={drop} style={styles}>
-			{Object.keys(boxes).map((key) => {
-        const { left, top, title } = boxes[key];
-        return (<Box key={key} id={key} left={left} top={top} hideSourceOnDrag={hideSourceOnDrag}>
-						{title}
-					</Box>);
-    })}
-		</div>);
-};
-
- * 
- * 
- */

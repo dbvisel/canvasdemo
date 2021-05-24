@@ -8,6 +8,11 @@ To run this locally, _npm install_, then _npm start_. Build with _npm run build_
 
 Still images are generated with a build step: _npm run make-images_, which screenshots all the images and puts them in _/public/images_.
 
+## Rework
+
+- add concept of spine, how to implement this?
+- show edges in walk mode
+
 ## Issues
 
  - Throbbers aren't wonderful.
@@ -27,6 +32,7 @@ Still images are generated with a build step: _npm run make-images_, which scree
 
 ## Todo/Features to consider:
 
+ - link to a particular stop
  - when a stop is selected, auto-center the canvas?
    - this is kind of being done, but not very effectively
  - arrow keys for moving through present mode

@@ -1,6 +1,8 @@
 import React from "react";
 import { SelectedStopDiv } from "./elements";
 
+const usePreviousSideTrips = false;
+
 const SelectedStop = ({
   stop,
   setSelectedStop,
@@ -9,18 +11,31 @@ const SelectedStop = ({
   isBottom,
 }) => {
   const getPreviousStop = (id) => {
-    const previousStops = [];
+    let previousStop = "";
     for (let i = 0; i < currentWalk.stops.length; i++) {
       if (
         currentWalk.stops[i].nextStop &&
-        currentWalk.stops[i].nextStop.length
+        currentWalk.stops[i].nextStop === id
       ) {
-        if (currentWalk.stops[i].nextStop.indexOf(id) > -1) {
-          previousStops[previousStops.length] = currentWalk.stops[i].id;
+        previousStop = currentWalk.stops[i].id;
+      }
+    }
+    return previousStop;
+  };
+
+  const getPreviousSideTrips = (id) => {
+    const previousSideTrips = [];
+    for (let i = 0; i < currentWalk.stops.length; i++) {
+      if (
+        currentWalk.stops[i].sideTrips &&
+        currentWalk.stops[i].sideTrips.length
+      ) {
+        if (currentWalk.stops[i].sideTrips.indexOf(id) > -1) {
+          previousSideTrips[previousSideTrips.length] = currentWalk.stops[i].id;
         }
       }
     }
-    return previousStops;
+    return previousSideTrips;
   };
 
   const getTitleFromId = (id) => {
@@ -29,26 +44,60 @@ const SelectedStop = ({
   };
 
   const previousStop = getPreviousStop(stop.id);
+
+  // TODO: display previous and next side trips
+  const previousSideTrips = getPreviousSideTrips(stop.id);
+  console.log("Previous side trips: ", previousSideTrips);
+  console.log("Next side trips", stop.sideTrips);
+
   return (
     <SelectedStopDiv className={isBottom ? "horizontal" : ""}>
       {!isBottom ? <h2>Selected stop:</h2> : null}
-      {isBottom
-        ? previousStop.map((prevStop, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setSelectedStop(prevStop);
-              }}
-            >
-              « Previous stop{previousStop.length > 1 ? ` ${index + 1}` : ""}
-            </button>
-          ))
-        : null}
+      {isBottom && previousStop ? (
+        <button
+          onClick={() => {
+            setSelectedStop(previousStop);
+          }}
+        >
+          <span>←</span>
+          {getTitleFromId(previousStop)}
+        </button>
+      ) : null}
       <div>
         <p>
           <strong className="verticalonly">Name: </strong>{" "}
           {stop.title || `Stop ${currentWalk.stops.indexOf(stop) + 1}`}
         </p>
+        {stop.sideTrips || (previousSideTrips && usePreviousSideTrips) ? (
+          <div className="sidetrips">
+            <hr />
+            <h4>Side trips:</h4>
+            {previousSideTrips && usePreviousSideTrips
+              ? previousSideTrips.map((previousSideTrip, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelectedStop(previousSideTrip);
+                    }}
+                  >
+                    {getTitleFromId(previousSideTrip)}
+                  </button>
+                ))
+              : null}
+            {stop.sideTrips
+              ? stop.sideTrips.map((sideTrip, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelectedStop(sideTrip);
+                    }}
+                  >
+                    {getTitleFromId(sideTrip)}
+                  </button>
+                ))
+              : null}
+          </div>
+        ) : null}
         {!isBottom ? (
           <React.Fragment>
             <button
@@ -64,31 +113,26 @@ const SelectedStop = ({
         {stop.text ? <p className="verticalonly">{stop.text}</p> : null}
       </div>
       {/*<p>{JSON.stringify(stop)}</p>*/}
-      {!isBottom
-        ? previousStop.map((prevStop, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setSelectedStop(prevStop);
-              }}
-            >
-              « {getTitleFromId(prevStop)}
-            </button>
-          ))
-        : null}
-      {stop.nextStop && stop.nextStop.length
-        ? stop.nextStop.map((nextStop, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setSelectedStop(nextStop);
-              }}
-            >
-              {getTitleFromId(nextStop)}
-              {" »"}
-            </button>
-          ))
-        : null}
+      {!isBottom && previousStop ? (
+        <button
+          onClick={() => {
+            setSelectedStop(previousStop);
+          }}
+        >
+          <span>←</span>
+          {getTitleFromId(previousStop)}
+        </button>
+      ) : null}
+      {stop.nextStop ? (
+        <button
+          onClick={() => {
+            setSelectedStop(stop.nextStop);
+          }}
+        >
+          {getTitleFromId(stop.nextStop)}
+          <span>→</span>
+        </button>
+      ) : null}
     </SelectedStopDiv>
   );
 };

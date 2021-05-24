@@ -3,6 +3,8 @@ import Graph from "react-graph-vis";
 import SelectedStop from "./../SelectedStop";
 import { GraphModeDiv } from "./elements";
 
+//TODO: distinguish nextStop/sideTrips
+
 const GraphMode = ({
   currentWalk,
   selectedStop,
@@ -19,11 +21,17 @@ const GraphMode = ({
     const makeEdges = (stops) => {
       const edges = [];
       for (let i = 0; i < stops.length; i++) {
-        if (stops[i].nextStop && stops[i].nextStop.length) {
-          for (let j = 0; j < stops[i].nextStop.length; j++) {
+        if (stops[i].nextStop) {
+          edges[edges.length] = {
+            from: currentWalk.id + "_" + stops[i].id,
+            to: currentWalk.id + "_" + stops[i].nextStop,
+          };
+        }
+        if (stops[i].sideTrips && stops[i].sideTrips.length) {
+          for (let j = 0; j < stops[i].sideTrips.length; j++) {
             edges[edges.length] = {
               from: currentWalk.id + "_" + stops[i].id,
-              to: currentWalk.id + "_" + stops[i].nextStop[j],
+              to: currentWalk.id + "_" + stops[i].sideTrips[j],
             };
           }
         }
