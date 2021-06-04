@@ -1,5 +1,7 @@
 # canvas collage demo
 
+**NOTE:** This has been superseded by a paged version of this, visible at https://github.com/dbvisel/canvasdemo
+
 Demo done in React to demonstrate how a JSON data format could be used to present "walks" of embedded items/sections of items from the Internet Archive, interleaved, if desired, with comments. This is done in React because that was an easy way to get a demo off the ground; it could be made in anything.
 
 This uses the JSON data stored in `/src/assets/walkData.js` to build a walk (or walks) based on what's in that data – that includes some basic documentation of the format. A demo deployment of this can be seen at https://collagewalk.netlify.app.
